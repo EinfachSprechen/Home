@@ -1,0 +1,28 @@
+{
+  "name": "einfach-sprechen-2",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "build:dev": "vite build --mode development",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "postbuild": "copy dist\\index.html dist\\404.html && echo.> dist\\.nojekyll"
+  },
+  "homepage": "https://damicodavid.github.io/einfach-sprechen-2/",
+  "dependencies": {
+    "@vitejs/plugin-react-swc": "^3.11.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "typescript": "^5.8.3",
+    "vite": "^7.0.5"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6"
+  }
+}
