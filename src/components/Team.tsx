@@ -43,7 +43,7 @@ const Team = () => {
             {/* Aliona */}
             <div className="group">
               <div className="relative overflow-hidden rounded-xl mb-6 flex justify-center">
-                <div className="aspect-[3/4] bg-gray-200 rounded-xl overflow-hidden w-3/4 lg:w-full">
+                <div className="aspect-[3/4] bg-gray-200 rounded-xl overflow-hidden w-1/2 lg:w-3/4">
                   <img 
                     src={alionaImage} 
                     alt="Aliona - Gründerin der Einfach Sprechen Community" 
@@ -89,7 +89,7 @@ const Team = () => {
             {/* Mystery Team Member */}
             <div className="group">
               <div className="relative overflow-hidden rounded-xl mb-6 flex justify-center">
-                <div className="aspect-[3/4] bg-gray-200 rounded-xl overflow-hidden w-3/4 lg:w-full">
+                <div className="aspect-[3/4] bg-gray-200 rounded-xl overflow-hidden w-1/2 lg:w-3/4">
                   <img 
                     src={team2Image} 
                     alt="Muttersprachlerin - Sprachklub-Leiterin" 

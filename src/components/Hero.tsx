@@ -109,7 +109,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
             className="order-2 lg:order-2 relative flex justify-center lg:justify-end"
           >
-            <div className="relative max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl">
+            <div className="relative max-w-[280px] md:max-w-sm lg:max-w-md xl:max-w-lg">
               {/* Main Image Container */}
               <div className="relative z-10">
                 <img 
