@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 50% 98%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 270 75% 59%;
+    --primary-foreground: 270 40% 98%;
+
+    --secondary: 270 40% 96.1%;
+    --secondary-foreground: 270 47.4% 11.2%;
+
+    --muted: 270 40% 96.1%;
+    --muted-foreground: 270 16.3% 46.9%;
+
+    --accent: 20 100% 55%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 270 84% 40%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 270 40% 70%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 20 100% 55%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-medium tracking-tight;
+  }
+
+  .container {
+    @apply px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-lila-dark hover:bg-lila text-white font-medium py-3 px-6 rounded-lg transition-all 
+    shadow-md hover:shadow-lg hover:translate-y-[-2px] active:translate-y-[0px] active:shadow-md duration-300;
+  }
+
+  .btn-secondary {
+    @apply bg-white hover:bg-gray-50 text-lila-dark border border-lila-dark font-medium py-3 px-6 rounded-lg transition-all
+    shadow-sm hover:shadow-md hover:translate-y-[-2px] active:translate-y-[0px] active:shadow-sm duration-300;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300
+    hover:shadow-lg;
+  }
+
+  .card-hover {
+    @apply hover:translate-y-[-5px] transition-transform duration-300;
+  }
+
+  .glassmorphism {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-lg rounded-2xl;
+  }
+
+  .section {
+    @apply py-16 sm:py-24;
+  }
+
+  .section-title {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-heading font-semibold text-center mb-10 sm:mb-16;
+  }
+
+  .section-subtitle {
+    @apply text-xl sm:text-2xl text-gray-600 text-center max-w-3xl mx-auto mb-16;
+  }
+
+  .feature-icon {
+    @apply w-14 h-14 p-3 rounded-full bg-pastel-lila text-lila-dark flex items-center justify-center mb-4;
+  }
+
+  .timeline-item {
+    @apply relative pl-8 pb-10 border-l border-lila last:border-transparent;
+  }
+
+  .timeline-item::before {
+    content: '';
+    @apply absolute w-4 h-4 rounded-full bg-lila-dark border-4 border-pastel-lila left-[-10px] top-0;
+  }
+  
+  .contact-button {
+    @apply flex items-center justify-center gap-3 rounded-full py-3 px-5 font-medium transition-all duration-300 shadow-sm hover:shadow-md;
+  }
+  
+  .slide-in {
+    @apply opacity-0;
+    animation: slide-in-from-right 0.8s ease forwards;
+  }
+  
+  .fade-in {
+    @apply opacity-0;
+    animation: fade-in 0.8s ease forwards;
+  }
+
+  @keyframes slide-in-from-right {
+    0% {
+      transform: translateX(50px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .promo-banner {
+    position: fixed;
+    top: 70px; /* Adjust if your Header is taller/shorter */
+    right: 20px;
+    z-index: 1000;
+    background: transparent;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+}

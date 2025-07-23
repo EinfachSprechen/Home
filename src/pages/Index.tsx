@@ -1,13 +1,14 @@
 import { useEffect } from 'react';
-import Header from '../components/Header';
-import Hero from '../components/Hero';
-import Mission from '../components/Mission';
-import Team from '../components/Team';
-import Process from '../components/Process';
-import LanguageClub from '../components/LanguageClub';
-import Pricing from '../components/Pricing';
-import Footer from '../components/Footer';
-import PromoBanner from '../components/PromoBanner';
+import Header from '@/components/Header';
+import Hero from '@/components/Hero';
+import Mission from '@/components/Mission';
+import Audience from '@/components/Audience';
+import Team from '@/components/Team';
+import Process from '@/components/Process';
+import LanguageClub from '@/components/LanguageClub';
+import Pricing from '@/components/Pricing';
+import Footer from '@/components/Footer';
+import PromoBanner from '@/components/PromoBanner';
 
 const Index = () => {
   useEffect(() => {
@@ -49,7 +50,8 @@ const Index = () => {
       <PromoBanner />
       <main>
         <Hero />
-        <Mission />
+        <Audience />
+        <Mission />        
         <Team />
         <Process />
         <LanguageClub />
