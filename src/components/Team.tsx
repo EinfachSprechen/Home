@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import alionaImage from '/images/aliona.jpg';
 
 const Team = () => {
   const itemVariants = {
@@ -40,7 +41,7 @@ const Team = () => {
             <div className="relative overflow-hidden rounded-xl mb-6 flex justify-center">
               <div className="aspect-[3/4] bg-gray-200 rounded-xl overflow-hidden w-1/2">
                 <img 
-                  src="/images/aliona.jpg" 
+                  src={alionaImage} 
                   alt="Aliona - Gründerin der Einfach Sprechen Community" 
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />

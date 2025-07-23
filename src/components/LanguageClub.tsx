@@ -1,6 +1,7 @@
 
 import { Video, Calendar, Clock, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
+import languageClubImage from '/images/language-club.png';
 
 const LanguageClub = () => {
   const activities = [
@@ -71,7 +72,7 @@ const LanguageClub = () => {
             <div className="relative">
               <div className="rounded-xl overflow-hidden shadow-lg">
                 <img 
-                  src="/images/language-club.png" 
+                  src={languageClubImage} 
                   alt="Deutscher Sprachklub" 
                   className="w-full h-auto"
                 />

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import ContactButtons from './ContactButtons';
+import heroImage from '/images/hero-image.png';
 
 const Hero = () => {
   return (
@@ -77,7 +78,7 @@ const Hero = () => {
               style={{ justifyContent: "flex-start", marginLeft: "-30%" }} // <-- adjust marginLeft as needed
             >
               <img 
-                src="/images/hero-image.png" 
+                src={heroImage} 
                 alt="Deutschlernende Community" 
                 className="w-full h-auto object-cover bg-transparent border-none shadow-none scale-[0.6] transition-transform duration-300"
               />

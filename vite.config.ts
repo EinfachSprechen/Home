@@ -5,7 +5,7 @@ import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: mode === 'development' ? '/' : '/einfach-sprechen-2/',
+  base: '/einfach-sprechen-2/',
   plugins: [
     react(),
   ],
