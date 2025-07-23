@@ -89,12 +89,12 @@ const Audience = () => {
               </motion.svg>
               {/* Button */}
               <motion.a
-                href="#contact"
+                href="#pricing"
                 onClick={e => {
                   e.preventDefault();
-                  const contact = document.getElementById("contact");
-                  if (contact) {
-                    contact.scrollIntoView({ behavior: "smooth" });
+                  const pricing = document.getElementById("pricing");
+                  if (pricing) {
+                    pricing.scrollIntoView({ behavior: "smooth" });
                   }
                 }}
                 initial={{ opacity: 0, y: 20 }}

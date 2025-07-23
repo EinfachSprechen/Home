@@ -26,6 +26,8 @@ const plans = [
     description: "Alle Inhalte, flexibel für den Einstieg",
     features: [
       "Alle Inhalte & Vorteile enthalten",
+      "Flexibler Einstieg ohne lange Bindung",
+      "Perfekt zum Ausprobieren der Methode",
       "Je länger du bleibst, desto günstiger wird es"
     ],
     highlight: false
@@ -37,7 +39,9 @@ const plans = [
     description: "Für alle, die dranbleiben wollen",
     features: [
       "Alle Inhalte & Vorteile enthalten",
-      "Günstigerer Wochenpreis"
+      "Günstigerer Wochenpreis",
+      "Mehr Zeit für nachhaltigen Fortschritt",
+      "Ideal für kontinuierliches Lernen"
     ],
     highlight: false
   },
@@ -48,7 +52,9 @@ const plans = [
     description: "Werde Sprachflow und spare am meisten",
     features: [
       "Alle Inhalte & Vorteile enthalten",
-      "Bester Preis pro Woche"
+      "Bester Preis pro Woche",
+      "Langfristige Sprachentwicklung",
+      "Maximale Ersparnisse bei längster Laufzeit"
     ],
     highlight: false
   }
@@ -124,8 +130,8 @@ const Pricing = () => (
         {plans.slice(0, 1).map((plan, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             className={`bg-white rounded-xl shadow-md overflow-hidden transition-all hover:shadow-lg hover:-translate-y-2 duration-300 min-w-[270px] ${
@@ -181,8 +187,8 @@ const Pricing = () => (
               return (
                 <CarouselItem key={plan.name} className={`!basis-[80vw] max-w-[340px] ${index === 0 ? 'ml-4' : ''} mr-6`}>
                   <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     className={`relative flex flex-col items-center bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg hover:border-orange-400 hover:bg-orange-50 transition-all duration-300 flex-1 min-w-[220px] max-w-full mx-2 p-0 z-10 pt-10 group`}
@@ -205,7 +211,11 @@ const Pricing = () => (
                         <div className="mb-2 inline-block bg-green-600 text-white text-xs font-bold rounded-full px-3 py-1 shadow z-10">
                           Spare bis zu {saveUpTo}€
                         </div>
-                      ) : null;
+                      ) : (
+                        <div className="mb-2 inline-block bg-transparent text-transparent text-xs font-bold rounded-full px-3 py-1 z-10">
+                          Spare bis zu 0€
+                        </div>
+                      );
                     })()}
                     <p className="text-gray-600 mb-6 text-base min-h-[48px] text-center break-words px-2">{plan.description}</p>
                     <button className="mt-auto w-[90%] py-2 mb-4 rounded-lg border-2 border-current text-base font-semibold text-gray-900 bg-white transition-colors duration-200 group-hover:bg-orange-500 group-hover:text-white hover:bg-orange-500 hover:text-white">
@@ -236,8 +246,8 @@ const Pricing = () => (
           return (
             <motion.div
               key={plan.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className={`relative flex flex-col items-center bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg hover:border-orange-400 hover:bg-orange-50 transition-all duration-300 flex-1 min-w-[220px] max-w-full mx-2 p-0 z-10 pt-10 group`}
@@ -262,7 +272,11 @@ const Pricing = () => (
                   <div className="mb-2 inline-block bg-green-600 text-white text-xs font-bold rounded-full px-3 py-1 shadow z-10">
                     Spare bis zu {saveUpTo}€
                   </div>
-                ) : null;
+                ) : (
+                  <div className="mb-2 inline-block bg-transparent text-transparent text-xs font-bold rounded-full px-3 py-1 z-10">
+                    Spare bis zu 0€
+                  </div>
+                );
               })()}
               <p className="text-gray-600 mb-6 text-base min-h-[48px] text-center break-words px-2">{plan.description}</p>
               <button className="mt-auto w-[90%] py-2 mb-4 rounded-lg border-2 border-current text-base font-semibold text-gray-900 bg-white transition-colors duration-200 group-hover:bg-orange-500 group-hover:text-white hover:bg-orange-500 hover:text-white">

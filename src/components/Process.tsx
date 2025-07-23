@@ -90,6 +90,97 @@ const Process = () => {
 						</motion.div>
 					))}
 				</div>
+
+				{/* Call to Action Button */}
+				<div className="flex justify-center mt-8 items-center">
+					<motion.div
+						className="flex flex-row items-center gap-8"
+						initial={false}
+						animate={false}
+					>
+						{/* Left Down Arrow */}
+						<motion.svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							strokeWidth={2}
+							stroke="currentColor"
+							className="w-8 h-8 text-orange-500"
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{
+								opacity: 1,
+								y: [0, -15, 0],
+								transition: {
+									opacity: { duration: 0.6 },
+									y: {
+										repeat: Infinity,
+										repeatType: "loop",
+										duration: 1,
+										ease: "easeInOut",
+									},
+								},
+							}}
+							viewport={{ once: true, amount: 0.3 }}
+						>
+							<path strokeLinecap="round" strokeLinejoin="round" d="M5 9l7 7 7-7" />
+						</motion.svg>
+						{/* Button */}
+						<motion.a
+							href="#pricing"
+							onClick={e => {
+								e.preventDefault();
+								const pricing = document.getElementById("pricing");
+								if (pricing) {
+									pricing.scrollIntoView({ behavior: "smooth" });
+								}
+							}}
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{
+								opacity: 1,
+								y: [0, -15, 0],
+								transition: {
+									opacity: { duration: 0.6 },
+									y: {
+										repeat: Infinity,
+										repeatType: "loop",
+										duration: 1,
+										ease: "easeInOut",
+									},
+								},
+							}}
+							viewport={{ once: true, amount: 0.3 }}
+							className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full shadow-lg text-lg transition-colors duration-200 inline-block text-center"
+						>
+							Jetzt beitreten! 
+						</motion.a>
+						{/* Right Down Arrow */}
+						<motion.svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							strokeWidth={2}
+							stroke="currentColor"
+							className="w-8 h-8 text-orange-500"
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{
+								opacity: 1,
+								y: [0, -15, 0],
+								transition: {
+									opacity: { duration: 0.6 },
+									y: {
+										repeat: Infinity,
+										repeatType: "loop",
+										duration: 1,
+										ease: "easeInOut",
+									},
+								},
+							}}
+							viewport={{ once: true, amount: 0.3 }}
+						>
+							<path strokeLinecap="round" strokeLinejoin="round" d="M5 9l7 7 7-7" />
+						</motion.svg>
+					</motion.div>
+				</div>
 			</div>
 		</section>
 	);
