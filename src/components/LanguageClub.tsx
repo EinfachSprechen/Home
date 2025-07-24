@@ -45,10 +45,13 @@ const LanguageClub = () => {
   };
 
   return (
-    <section id="club" className="section bg-pastel-lila/30 relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-orange-light to-orange opacity-20 rounded-full transform translate-x-1/3 -translate-y-1/3"></div>
-      <div className="absolute bottom-0 left-0 w-72 h-72 bg-gradient-to-tr from-lila to-lila-light opacity-30 rounded-full transform -translate-x-1/3 translate-y-1/3"></div>
+    <section id="club" className="section relative overflow-hidden bg-gradient-to-b from-pastel-orange/10 to-pastel-lila/20">
+      {/* Background decoration */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute top-0 right-0 w-[350px] h-[350px] bg-pastel-lila rounded-full filter blur-3xl opacity-25 -translate-y-1/4 translate-x-1/3"></div>
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-pastel-orange rounded-full filter blur-3xl opacity-20 translate-y-1/3 -translate-x-1/4"></div>
+        <div className="absolute top-1/2 right-1/3 w-[160px] h-[160px] bg-orange-light rounded-full filter blur-xl opacity-15 -translate-y-1/2"></div>
+      </div>
       
       <div className="container relative z-10">
         <motion.div
@@ -231,101 +234,205 @@ const LanguageClub = () => {
               
               <h3 className="text-2xl font-semibold mb-6">So läuft eine typische Woche bei uns ab:</h3>
               
-              {/* Calendar Grid */}
-              <div className="grid grid-cols-1 gap-3 max-w-5xl mx-auto">
-                {/* Days Headers */}
-                <div className="grid grid-cols-7 gap-2 mb-3">
-                  <div className="text-center text-sm font-medium text-gray-500 py-3 border border-gray-200 rounded-lg bg-gray-50">Mo</div>
-                  <div className="text-center text-sm font-medium text-gray-500 py-3 border border-gray-200 rounded-lg bg-gray-50">Di</div>
-                  <div className="text-center text-sm font-medium text-gray-500 py-3 border border-gray-200 rounded-lg bg-gray-50">Mi</div>
-                  <div className="text-center text-sm font-medium text-gray-500 py-3 border border-gray-200 rounded-lg bg-gray-50">Do</div>
-                  <div className="text-center text-sm font-medium text-gray-500 py-3 border border-gray-200 rounded-lg bg-gray-50">Fr</div>
-                  <div className="text-center text-sm font-medium text-gray-500 py-3 border border-gray-200 rounded-lg bg-gray-50">Sa</div>
-                  <div className="text-center text-sm font-medium text-gray-500 py-3 border border-gray-200 rounded-lg bg-gray-50">So</div>
-                </div>
-
-                {/* Calendar Cells */}
-                <div className="grid grid-cols-7 gap-1">
+              {/* Calendar - Mobile First Design */}
+              <div className="max-w-5xl mx-auto">
+                {/* Mobile Calendar - Vertical Cards */}
+                <div className="flex flex-col gap-4 md:hidden">
                   {/* Monday */}
-                  <div className="bg-orange/10 border-2 border-orange/30 rounded-lg p-1 md:p-2 min-h-[100px] md:min-h-[120px] border border-gray-200">
-                    <div className="text-[10px] md:text-sm font-semibold text-orange mb-1 md:mb-2">Montag</div>
-                    <div className="text-[9px] md:text-sm text-gray-700">
-                      <div className="mb-1 md:mb-2">🧠 <strong>Sprachimpuls</strong></div>
-                      <div>Input + Chat</div>
+                  <div className="bg-gradient-to-r from-orange-50 to-orange-100 border-l-4 border-orange rounded-xl p-5 shadow-sm">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="font-bold text-orange text-lg">Montag</div>
+                      <div className="bg-orange/20 px-2 py-1 rounded-full">
+                        <span className="text-orange text-xs font-medium">🧠 Sprachimpuls</span>
+                      </div>
+                    </div>
+                    <div className="text-gray-700">
+                      <div className="font-medium mb-1">Input + Chat</div>
+                      <div className="text-sm text-gray-600">Tägliche Sprachübungen und Diskussionen</div>
                     </div>
                   </div>
 
                   {/* Tuesday */}
-                  <div className="bg-orange/10 border-2 border-orange/30 rounded-lg p-1 md:p-2 min-h-[100px] md:min-h-[120px] border border-gray-200">
-                    <div className="text-[10px] md:text-sm font-semibold text-orange mb-1 md:mb-2">Dienstag</div>
-                    <div className="text-[9px] md:text-sm text-gray-700">
-                      <div className="mb-1 md:mb-2">🧠 <strong>Sprachimpuls</strong></div>
-                      <div>Input + Chat</div>
+                  <div className="bg-gradient-to-r from-orange-50 to-orange-100 border-l-4 border-orange rounded-xl p-5 shadow-sm">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="font-bold text-orange text-lg">Dienstag</div>
+                      <div className="bg-orange/20 px-2 py-1 rounded-full">
+                        <span className="text-orange text-xs font-medium">🧠 Sprachimpuls</span>
+                      </div>
+                    </div>
+                    <div className="text-gray-700">
+                      <div className="font-medium mb-1">Input + Chat</div>
+                      <div className="text-sm text-gray-600">Tägliche Sprachübungen und Diskussionen</div>
                     </div>
                   </div>
 
                   {/* Wednesday */}
-                  <div className="bg-lila/10 border-2 border-lila/30 rounded-lg p-1 md:p-2 min-h-[100px] md:min-h-[120px] border border-gray-200">
-                    <div className="text-[10px] md:text-sm font-semibold text-lila mb-1 md:mb-2">Mittwoch</div>
-                    <div className="text-[9px] md:text-sm text-gray-700">
-                      <div className="mb-1 md:mb-2">😌 <strong>Ruhetag</strong></div>
-                      <div>Aufholen & Chatten</div>
+                  <div className="bg-gradient-to-r from-purple-50 to-purple-100 border-l-4 border-lila rounded-xl p-5 shadow-sm">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="font-bold text-lila text-lg">Mittwoch</div>
+                      <div className="bg-lila/20 px-2 py-1 rounded-full">
+                        <span className="text-lila text-xs font-medium">😌 Ruhetag</span>
+                      </div>
+                    </div>
+                    <div className="text-gray-700">
+                      <div className="font-medium mb-1">Aufholen & Chatten</div>
+                      <div className="text-sm text-gray-600">Zeit zum Nacharbeiten und entspannten Austausch</div>
                     </div>
                   </div>
 
                   {/* Thursday */}
-                  <div className="bg-orange/10 border-2 border-orange/30 rounded-lg p-1 md:p-2 min-h-[100px] md:min-h-[120px] border border-gray-200">
-                    <div className="text-[10px] md:text-sm font-semibold text-orange mb-1 md:mb-2">Donnerstag</div>
-                    <div className="text-[9px] md:text-sm text-gray-700">
-                      <div className="mb-1 md:mb-2">🧠 <strong>Sprachimpuls</strong></div>
-                      <div>Input + Chat</div>
+                  <div className="bg-gradient-to-r from-orange-50 to-orange-100 border-l-4 border-orange rounded-xl p-5 shadow-sm">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="font-bold text-orange text-lg">Donnerstag</div>
+                      <div className="bg-orange/20 px-2 py-1 rounded-full">
+                        <span className="text-orange text-xs font-medium">🧠 Sprachimpuls</span>
+                      </div>
+                    </div>
+                    <div className="text-gray-700">
+                      <div className="font-medium mb-1">Input + Chat</div>
+                      <div className="text-sm text-gray-600">Tägliche Sprachübungen und Diskussionen</div>
                     </div>
                   </div>
 
                   {/* Friday */}
-                  <div className="bg-orange/10 border-2 border-orange/30 rounded-lg p-1 md:p-2 min-h-[100px] md:min-h-[120px] border border-gray-200">
-                    <div className="text-[10px] md:text-sm font-semibold text-orange mb-1 md:mb-2">Freitag</div>
-                    <div className="text-[9px] md:text-sm text-gray-700">
-                      <div className="mb-1 md:mb-2">🧠 <strong>Sprachimpuls</strong></div>
-                      <div>Chat + ✨ Quizlet</div>
+                  <div className="bg-gradient-to-r from-orange-50 to-orange-100 border-l-4 border-orange rounded-xl p-5 shadow-sm">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="font-bold text-orange text-lg">Freitag</div>
+                      <div className="bg-orange/20 px-2 py-1 rounded-full">
+                        <span className="text-orange text-xs font-medium">🧠 Sprachimpuls</span>
+                      </div>
+                    </div>
+                    <div className="text-gray-700">
+                      <div className="font-medium mb-1">Chat + ✨ Quizlet</div>
+                      <div className="text-sm text-gray-600">Wöchentliches Vokabel-Set zum Üben</div>
                     </div>
                   </div>
 
                   {/* Saturday */}
-                  <div className="bg-green-100 border-2 border-green-400 rounded-lg p-1 md:p-2 min-h-[100px] md:min-h-[120px] border border-gray-200">
-                    <div className="text-[10px] md:text-sm font-semibold text-green-700 mb-1 md:mb-2">Samstag</div>
-                    <div className="text-[9px] md:text-sm text-gray-700">
-                      <div className="mb-1 md:mb-2">🗣️ <strong>Sprachklub</strong></div>
-                      <div>60 Min Zoom</div>
+                  <div className="bg-gradient-to-r from-green-50 to-green-100 border-l-4 border-green-500 rounded-xl p-5 shadow-sm">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="font-bold text-green-700 text-lg">Samstag</div>
+                      <div className="bg-green-500/20 px-2 py-1 rounded-full">
+                        <span className="text-green-700 text-xs font-medium">🗣️ Sprachklub</span>
+                      </div>
+                    </div>
+                    <div className="text-gray-700">
+                      <div className="font-medium mb-1">60 Min Zoom</div>
+                      <div className="text-sm text-gray-600">Live-Session mit Muttersprachlerin</div>
                     </div>
                   </div>
 
                   {/* Sunday */}
-                  <div className="bg-lila/10 border-2 border-lila/30 rounded-lg p-1 md:p-2 min-h-[100px] md:min-h-[120px] border border-gray-200">
-                    <div className="text-[10px] md:text-sm font-semibold text-lila mb-1 md:mb-2">Sonntag</div>
-                    <div className="text-[9px] md:text-sm text-gray-700">
-                      <div className="mb-1 md:mb-2">📱 <strong>Frei</strong></div>
-                      <div>Optional Chat</div>
+                  <div className="bg-gradient-to-r from-purple-50 to-purple-100 border-l-4 border-lila rounded-xl p-5 shadow-sm">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="font-bold text-lila text-lg">Sonntag</div>
+                      <div className="bg-lila/20 px-2 py-1 rounded-full">
+                        <span className="text-lila text-xs font-medium">📱 Frei</span>
+                      </div>
+                    </div>
+                    <div className="text-gray-700">
+                      <div className="font-medium mb-1">Optional Chat</div>
+                      <div className="text-sm text-gray-600">Freiwilliger Austausch und Wiederholung</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Desktop Calendar - Grid Layout */}
+                <div className="hidden md:block">
+                  {/* Days Headers */}
+                  <div className="grid grid-cols-7 gap-2 mb-4">
+                    <div className="text-center text-sm font-medium text-gray-500 py-3 border border-gray-200 rounded-lg bg-gray-50">Mo</div>
+                    <div className="text-center text-sm font-medium text-gray-500 py-3 border border-gray-200 rounded-lg bg-gray-50">Di</div>
+                    <div className="text-center text-sm font-medium text-gray-500 py-3 border border-gray-200 rounded-lg bg-gray-50">Mi</div>
+                    <div className="text-center text-sm font-medium text-gray-500 py-3 border border-gray-200 rounded-lg bg-gray-50">Do</div>
+                    <div className="text-center text-sm font-medium text-gray-500 py-3 border border-gray-200 rounded-lg bg-gray-50">Fr</div>
+                    <div className="text-center text-sm font-medium text-gray-500 py-3 border border-gray-200 rounded-lg bg-gray-50">Sa</div>
+                    <div className="text-center text-sm font-medium text-gray-500 py-3 border border-gray-200 rounded-lg bg-gray-50">So</div>
+                  </div>
+
+                  {/* Calendar Cells */}
+                  <div className="grid grid-cols-7 gap-2">
+                    {/* Monday */}
+                    <div className="bg-orange/10 border-2 border-orange/30 rounded-lg p-3 min-h-[140px]">
+                      <div className="text-sm font-semibold text-orange mb-2">Montag</div>
+                      <div className="text-sm text-gray-700">
+                        <div className="mb-2">🧠 <strong>Sprachimpuls</strong></div>
+                        <div>Input + Chat</div>
+                      </div>
+                    </div>
+
+                    {/* Tuesday */}
+                    <div className="bg-orange/10 border-2 border-orange/30 rounded-lg p-3 min-h-[140px]">
+                      <div className="text-sm font-semibold text-orange mb-2">Dienstag</div>
+                      <div className="text-sm text-gray-700">
+                        <div className="mb-2">🧠 <strong>Sprachimpuls</strong></div>
+                        <div>Input + Chat</div>
+                      </div>
+                    </div>
+
+                    {/* Wednesday */}
+                    <div className="bg-lila/10 border-2 border-lila/30 rounded-lg p-3 min-h-[140px]">
+                      <div className="text-sm font-semibold text-lila mb-2">Mittwoch</div>
+                      <div className="text-sm text-gray-700">
+                        <div className="mb-2">😌 <strong>Ruhetag</strong></div>
+                        <div>Aufholen & Chatten</div>
+                      </div>
+                    </div>
+
+                    {/* Thursday */}
+                    <div className="bg-orange/10 border-2 border-orange/30 rounded-lg p-3 min-h-[140px]">
+                      <div className="text-sm font-semibold text-orange mb-2">Donnerstag</div>
+                      <div className="text-sm text-gray-700">
+                        <div className="mb-2">🧠 <strong>Sprachimpuls</strong></div>
+                        <div>Input + Chat</div>
+                      </div>
+                    </div>
+
+                    {/* Friday */}
+                    <div className="bg-orange/10 border-2 border-orange/30 rounded-lg p-3 min-h-[140px]">
+                      <div className="text-sm font-semibold text-orange mb-2">Freitag</div>
+                      <div className="text-sm text-gray-700">
+                        <div className="mb-2">🧠 <strong>Sprachimpuls</strong></div>
+                        <div>Chat + ✨ Quizlet</div>
+                      </div>
+                    </div>
+
+                    {/* Saturday */}
+                    <div className="bg-green-100 border-2 border-green-400 rounded-lg p-3 min-h-[140px]">
+                      <div className="text-sm font-semibold text-green-700 mb-2">Samstag</div>
+                      <div className="text-sm text-gray-700">
+                        <div className="mb-2">🗣️ <strong>Sprachklub</strong></div>
+                        <div>60 Min Zoom</div>
+                      </div>
+                    </div>
+
+                    {/* Sunday */}
+                    <div className="bg-lila/10 border-2 border-lila/30 rounded-lg p-3 min-h-[140px]">
+                      <div className="text-sm font-semibold text-lila mb-2">Sonntag</div>
+                      <div className="text-sm text-gray-700">
+                        <div className="mb-2">📱 <strong>Frei</strong></div>
+                        <div>Optional Chat</div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Legend */}
-              <div className="mt-6 pt-4 border-t border-gray-200">
-                <h4 className="text-sm font-medium mb-3">Legende:</h4>
-                <div className="space-y-2 text-xs">
-                  <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 bg-orange/30 rounded"></div>
-                    <span>Sprachimpuls-Tage mit Input & Chat</span>
+              {/* Modern Inline Legend */}
+              <div className="mt-8 pt-6 border-t border-gray-200">
+                <h4 className="text-sm font-semibold mb-4 text-gray-800">Aktivitäten-Übersicht:</h4>
+                <div className="flex flex-wrap gap-4 text-sm">
+                  <div className="flex items-center gap-3 bg-orange-50 px-4 py-2 rounded-full border border-orange-200">
+                    <div className="w-4 h-4 bg-orange-400 rounded-full"></div>
+                    <span className="text-gray-700 font-medium">Sprachimpuls-Tage</span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 bg-green-400 rounded"></div>
-                    <span>Zoom-Sprachklub (Highlight der Woche)</span>
+                  <div className="flex items-center gap-3 bg-green-50 px-4 py-2 rounded-full border border-green-200">
+                    <div className="w-4 h-4 bg-green-500 rounded-full"></div>
+                    <span className="text-gray-700 font-medium">Live Sprachklub</span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 bg-lila/30 rounded"></div>
-                    <span>Ruhetag zum Vertiefen</span>
+                  <div className="flex items-center gap-3 bg-purple-50 px-4 py-2 rounded-full border border-purple-200">
+                    <div className="w-4 h-4 bg-lila rounded-full"></div>
+                    <span className="text-gray-700 font-medium">Freie Tage</span>
                   </div>
                 </div>
               </div>

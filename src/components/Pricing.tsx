@@ -61,8 +61,83 @@ const plans = [
 ];
 
 const Pricing = () => (
-  <section id="pricing" className="section bg-gradient-to-b from-pastel-blue/30 to-white">
-    <div className="container max-w-7xl mx-auto px-6">
+  <section id="pricing" className="section relative overflow-hidden bg-gradient-to-b from-pastel-orange/10 to-pastel-lila/15">
+    {/* Background decoration */}
+    <div className="absolute inset-0 -z-10 overflow-hidden">
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-pastel-lila rounded-full filter blur-3xl opacity-20 -translate-y-1/2 translate-x-1/3"></div>
+      <div className="absolute bottom-0 left-0 w-[450px] h-[450px] bg-pastel-orange rounded-full filter blur-3xl opacity-18 translate-y-1/3 -translate-x-1/3"></div>
+      <div className="absolute top-1/3 left-1/3 w-[200px] h-[200px] bg-orange-light rounded-full filter blur-2xl opacity-12"></div>
+      
+      {/* Decorative squared elements */}
+      <div className="absolute top-1/6 left-1/4 w-10 h-10 bg-pastel-peach rounded-lg rotate-45 animate-float opacity-60"></div>
+      <div className="absolute bottom-1/4 right-1/6 w-13 h-13 bg-pastel-green rounded-lg rotate-30 animate-float opacity-55"></div>
+      <div className="absolute top-3/4 left-1/6 w-11 h-11 bg-pastel-blue rounded-lg rotate-15 animate-float opacity-65"></div>
+      <div className="absolute top-1/3 right-1/4 w-8 h-8 bg-pastel-pink rounded-lg rotate-50 animate-float opacity-70"></div>
+      
+      {/* Animated decorative elements */}
+      <motion.div 
+        className="absolute top-1/5 left-1/6 w-9 h-9 bg-pastel-lila/40 rounded-full"
+        animate={{ 
+          opacity: [0.3, 0.8, 0.3],
+          scale: [0.8, 1.6, 0.8]
+        }}
+        transition={{ 
+          duration: 7.5,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+      <motion.div 
+        className="absolute top-1/2 right-1/5 w-6 h-6 bg-orange-light/50"
+        animate={{ 
+          opacity: [0.2, 0.7, 0.2],
+          rotate: [0, 360]
+        }}
+        transition={{ 
+          duration: 12,
+          repeat: Infinity,
+          ease: "linear"
+        }}
+      />
+      <motion.div 
+        className="absolute bottom-1/3 left-1/4 w-7 h-7 bg-pastel-orange/45 rounded-full"
+        animate={{ 
+          opacity: [0.4, 0.9, 0.4],
+          y: [-18, 18, -18]
+        }}
+        transition={{ 
+          duration: 6.5,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+      <motion.div 
+        className="absolute top-2/3 right-1/3 w-5 h-5 bg-lila/40 rotate-45"
+        animate={{ 
+          opacity: [0.25, 0.75, 0.25],
+          x: [-14, 14, -14]
+        }}
+        transition={{ 
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+      <motion.div 
+        className="absolute top-1/4 right-1/2 w-4 h-4 bg-pastel-lila/55 rounded-full"
+        animate={{ 
+          opacity: [0.35, 0.85, 0.35],
+          scale: [1, 1.3, 1]
+        }}
+        transition={{ 
+          duration: 5,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+    </div>
+    
+    <div className="container max-w-7xl mx-auto px-6 relative z-10">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

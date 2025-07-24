@@ -1,5 +1,5 @@
 
-import { Instagram, MessageSquare, Send } from 'lucide-react';
+import { Instagram, Send } from 'lucide-react';
 
 interface ContactButtonsProps {
   size?: 'small' | 'normal';
@@ -12,7 +12,7 @@ const ContactButtons = ({ size = 'normal', className = '' }: ContactButtonsProps
   return (
     <div className={`flex flex-wrap gap-3 ${className}`}>
       <a 
-        href="https://t.me/aliona" 
+        href="https://t.me/hey_alyon_ka" 
         target="_blank" 
         rel="noopener noreferrer"
         className={`contact-button ${buttonSize} bg-[#0088cc] hover:bg-[#0099E6] text-white`}
@@ -21,22 +21,13 @@ const ContactButtons = ({ size = 'normal', className = '' }: ContactButtonsProps
         <span>Telegram</span>
       </a>
       <a 
-        href="https://www.instagram.com/einfach_sprechen_community" 
+        href="https://www.instagram.com/hey_alyon_ka/?hl=en" 
         target="_blank" 
         rel="noopener noreferrer"
         className={`contact-button ${buttonSize} bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] hover:opacity-90 text-white`}
       >
         <Instagram size={size === 'small' ? 16 : 20} />
         <span>Instagram</span>
-      </a>
-      <a 
-        href="https://wa.me/1234567890" 
-        target="_blank" 
-        rel="noopener noreferrer"
-        className={`contact-button ${buttonSize} bg-[#25D366] hover:bg-[#128C7E] text-white`}
-      >
-        <MessageSquare size={size === 'small' ? 16 : 20} />
-        <span>WhatsApp</span>
       </a>
     </div>
   );

@@ -4,68 +4,39 @@ import heroImage from '/images/hero-image.png';
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-16 md:pt-24 pb-8 overflow-hidden">
+    <section
+      className="relative min-h-screen flex items-center pt-48 pb-0 overflow-hidden"
+      style={{ marginTop: "-20%" }}
+    >
       {/* Background decoration */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-0 right-0 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-pastel-lila rounded-full filter blur-3xl opacity-30 -translate-y-1/2 translate-x-1/4"></div>
-        <div className="absolute bottom-0 left-0 w-[350px] md:w-[500px] h-[350px] md:h-[500px] bg-pastel-orange rounded-full filter blur-3xl opacity-20 translate-y-1/3 -translate-x-1/4"></div>
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-pastel-lila rounded-full filter blur-3xl opacity-30 -translate-y-1/2 translate-x-1/4"></div>
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-pastel-orange rounded-full filter blur-3xl opacity-20 translate-y-1/3 -translate-x-1/4"></div>
       </div>
       
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-7xl mx-auto">
-          {/* Content Section */}
+      <div className="container" style={{ marginBottom: '-3%' }}>
+        <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="order-1 lg:order-1 text-center lg:text-left space-y-6"
+            className="text-center md:text-left"
           >
-            {/* Badge */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-block"
-            >
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-pastel-lila text-lila-dark font-medium text-sm md:text-base">
-                Community für Deutschlernende
-              </div>
-            </motion.div>
-
-            {/* Main Heading */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold tracking-tight leading-tight">
-                Einfach <span className="text-orange">Sprechen</span>
-              </h1>
-            </motion.div>
-
-            {/* Subtitle */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <h2 className="text-lg sm:text-xl md:text-2xl text-gray-600 leading-relaxed max-w-lg mx-auto lg:mx-0">
-                Gemeinsam wachsen.<br />
-                Mutig sprechen.<br />
-                Spannende Gespräche führen.<br />
-                Mit muttersprachlicher Begleitung.
-              </h2>
-            </motion.div>
-
-            {/* Action Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-            >
+            <div className="inline-block px-3 py-1 mb-4 rounded-full bg-pastel-lila text-lila-dark font-medium text-base sm:text-lg" style={{ transform: "scale(0.9)", transformOrigin: "left" }}>
+              Community für Deutschlernende
+            </div>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold mb-6 tracking-tight">
+              Einfach <span className="text-orange">Sprechen</span>
+            </h1>
+            <h2 className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-lg mx-auto md:mx-0">
+              Gemeinsam wachsen.<br />
+              Mutig sprechen.<br />
+              Spannende Gespräche führen.<br />
+              Mit muttersprachlicher Begleitung.
+            </h2>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-8">
               <button
-                className="btn-primary flex items-center justify-center gap-2 text-sm md:text-base"
+                className="btn-primary flex items-center justify-center gap-2"
                 onClick={() => {
                   const contact = document.getElementById("contact");
                   if (contact) {
@@ -74,12 +45,12 @@ const Hero = () => {
                 }}
               >
                 <span>Jetzt beitreten</span>
-                <svg className="w-4 h-4 md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </button>
               <button
-                className="btn-secondary text-sm md:text-base"
+                className="btn-secondary"
                 onClick={() => {
                   const mission = document.getElementById("mission");
                   if (mission) {
@@ -89,83 +60,54 @@ const Hero = () => {
               >
                 Mehr erfahren
               </button>
-            </motion.div>
+            </div>
             
-            {/* Contact Buttons - Desktop */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="hidden lg:block pt-4"
-            >
+            <div className="hidden md:block">
               <ContactButtons />
-            </motion.div>
+            </div>
           </motion.div>
           
-          {/* Image Section */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-            className="order-2 lg:order-2 relative flex justify-center lg:justify-end"
+            className="relative"
           >
-            <div className="relative max-w-[280px] md:max-w-sm lg:max-w-md xl:max-w-lg">
-              {/* Main Image Container */}
-              <div className="relative z-10">
-                <img 
-                  src={heroImage} 
-                  alt="Deutschlernende Community" 
-                  className="w-full h-auto object-cover"
-                />
-              </div>
+            <motion.div
+              className="relative z-10 rounded-2xl overflow-visible flex items-center"
+              style={{ justifyContent: "flex-start", marginLeft: "-30%" }} // <-- adjust marginLeft as needed
+              initial={{ rotate: 0 }}
+              animate={{ 
+                rotate: [0, 10, -10, 10]
+              }}
+              transition={{
+                duration: 15, // 15 seconds for pendulum motion
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            >
+              <img 
+                src={heroImage} 
+                alt="Deutschlernende Community" 
+                className="w-full h-auto object-cover bg-transparent border-none shadow-none scale-[0.6] transition-transform duration-300"
+              />
+            </motion.div>
 
-              {/* Decorative elements */}
-              <div className="absolute top-4 -right-4 md:top-8 md:-right-8 w-8 h-8 md:w-12 md:h-12 bg-pastel-orange rounded-lg rotate-45 animate-float"></div>
-              <div className="absolute -bottom-4 left-4 md:-bottom-8 md:left-8 w-10 h-10 md:w-16 md:h-16 bg-pastel-lila rounded-lg rotate-12 animate-float"></div>
-              <div className="absolute top-1/4 -left-4 md:-left-8 w-6 h-6 md:w-8 md:h-8 bg-orange-light/50 rounded-full opacity-60 animate-pulse"></div>
-              <div className="absolute bottom-1/4 -right-2 md:-right-4 w-4 h-4 md:w-6 md:h-6 bg-lila/30 rounded-full opacity-80 animate-pulse"></div>
-            </div>
+            {/* Decorative elements */}
+            <div className="absolute top-1/2 -right-6 transform -translate-y-1/2 w-12 h-12 bg-pastel-orange rounded-lg rotate-45 animate-float"></div>
+            <div className="absolute -bottom-6 left-1/4 transform w-16 h-16 bg-pastel-lila rounded-lg rotate-12 animate-float"></div>
+            <div className="absolute top-0 left-0 transform -translate-x-1/4 -translate-y-1/4 w-24 h-24 bg-orange-light/50 rounded-full opacity-60"></div>
           </motion.div>
         </div>
         
-        {/* Contact Buttons - Mobile */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          className="lg:hidden mt-8 pt-8 border-t border-gray-200"
-        >
+        <div className="md:hidden mt-12">
           <ContactButtons className="justify-center" />
-          
-          {/* Scroll Indicator - Mobile */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1, repeat: Infinity, repeatType: "reverse" }}
-            className="flex justify-center mt-8"
-          >
-            <svg
-              className="w-8 h-8 text-orange-400"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-            </svg>
-          </motion.div>
-        </motion.div>
+        </div>
       </div>
-
-      {/* Scroll Indicator - Desktop */}
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1, repeat: Infinity, repeatType: "reverse" }}
-        className="hidden lg:block absolute left-1/2 bottom-6 transform -translate-x-1/2 z-20"
-      >
+      {/* Pulsing down arrow at the bottom */}
+      <div className="absolute left-1/2 bottom-6 transform -translate-x-1/2 z-20">
         <svg
-          className="w-8 h-8 md:w-10 md:h-10 text-orange-400"
+          className="w-12 h-12 text-orange-400 animate-bounce" // 50% bigger than w-8 h-8
           fill="none"
           stroke="currentColor"
           strokeWidth="2"
@@ -173,7 +115,7 @@ const Hero = () => {
         >
           <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
         </svg>
-      </motion.div>
+      </div>
     </section>
   );
 };

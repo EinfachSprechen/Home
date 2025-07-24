@@ -6,6 +6,7 @@ import Audience from '@/components/Audience';
 import Team from '@/components/Team';
 import Process from '@/components/Process';
 import LanguageClub from '@/components/LanguageClub';
+import Feedback from '@/components/Feedback';
 import Pricing from '@/components/Pricing';
 import Footer from '@/components/Footer';
 import PromoBanner from '@/components/PromoBanner';
@@ -49,13 +50,30 @@ const Index = () => {
       <Header />
       <PromoBanner />
       <main>
-        <Hero />
-        <Audience />
-        <Mission />        
-        <Team />
-        <Process />
-        <LanguageClub />
-        <Pricing />
+        <div className="bg-pastel-lila/15">
+          <Hero />
+        </div>
+        <div className="bg-pastel-orange/15">
+          <Audience />
+        </div>
+        <div className="bg-pastel-pink/15">
+          <Mission />
+        </div>
+        <div className="bg-pastel-blue/15">
+          <Team />
+        </div>
+        <div className="bg-pastel-peach/15">
+          <LanguageClub />
+        </div>
+        <div className="bg-pastel-blue/15">
+          <Feedback />
+        </div>
+        <div className="bg-pastel-pink/15">
+          <Pricing />
+        </div>
+        <div className="bg-pastel-pink/15">
+          <Process />
+        </div>
       </main>
       <Footer />
     </div>

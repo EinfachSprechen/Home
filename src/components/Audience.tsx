@@ -14,8 +14,70 @@ const reasons = [
 
 const Audience = () => {
 	return (
-		<section id="audience" className="section">
-			<div className="container">
+		<section id="audience" className="section relative overflow-hidden bg-gradient-to-b from-pastel-lila/10 to-white">
+			{/* Background decoration */}
+			<div className="absolute inset-0 -z-10 overflow-hidden">
+				<div className="absolute top-0 left-0 w-[450px] h-[450px] bg-pastel-orange rounded-full filter blur-3xl opacity-15 -translate-y-1/2 -translate-x-1/3"></div>
+				<div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-pastel-lila rounded-full filter blur-3xl opacity-20 translate-y-1/3 translate-x-1/4"></div>
+				<div className="absolute top-1/3 left-1/4 w-[180px] h-[180px] bg-lila-light rounded-full filter blur-2xl opacity-12"></div>
+				
+				{/* Decorative squared elements */}
+				<div className="absolute top-1/4 right-1/6 w-10 h-10 bg-pastel-pink rounded-lg rotate-45 animate-float opacity-60"></div>
+				<div className="absolute bottom-1/3 left-1/8 w-14 h-14 bg-pastel-blue rounded-lg rotate-12 animate-float opacity-50"></div>
+				<div className="absolute top-2/3 right-1/3 w-8 h-8 bg-pastel-peach rounded-lg rotate-30 animate-float opacity-70"></div>
+				
+				{/* Animated decorative elements */}
+				<motion.div 
+					className="absolute top-1/5 right-1/4 w-7 h-7 bg-pastel-orange/40 rounded-full"
+					animate={{ 
+						opacity: [0.3, 0.8, 0.3],
+						scale: [0.8, 1.3, 0.8]
+					}}
+					transition={{ 
+						duration: 5.5,
+						repeat: Infinity,
+						ease: "easeInOut"
+					}}
+				/>
+				<motion.div 
+					className="absolute top-2/3 left-1/5 w-5 h-5 bg-lila/35"
+					animate={{ 
+						opacity: [0.25, 0.7, 0.25],
+						rotate: [0, 180, 360]
+					}}
+					transition={{ 
+						duration: 8,
+						repeat: Infinity,
+						ease: "linear"
+					}}
+				/>
+				<motion.div 
+					className="absolute bottom-1/4 right-1/3 w-6 h-6 bg-pastel-lila/45 rounded-full"
+					animate={{ 
+						opacity: [0.4, 0.9, 0.4],
+						x: [-8, 8, -8]
+					}}
+					transition={{ 
+						duration: 6.5,
+						repeat: Infinity,
+						ease: "easeInOut"
+					}}
+				/>
+				<motion.div 
+					className="absolute top-1/2 left-1/3 w-4 h-4 bg-orange-light/50 rotate-45"
+					animate={{ 
+						opacity: [0.2, 0.6, 0.2],
+						y: [-12, 12, -12]
+					}}
+					transition={{ 
+						duration: 4.5,
+						repeat: Infinity,
+						ease: "easeInOut"
+					}}
+				/>
+			</div>
+			
+			<div className="container relative z-10">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					whileInView={{ opacity: 1, y: 0 }}

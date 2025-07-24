@@ -1,4 +1,4 @@
-import { Heart, Send, MessageSquare, Instagram } from 'lucide-react';
+import { Heart, Send, Instagram } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -13,14 +13,11 @@ const Footer = () => {
               Eine Community für Deutschlernende, die ihre Sprachfähigkeiten in einem unterstützenden Umfeld verbessern möchten.
             </p>
             <div className="flex space-x-4">
-              <a href="https://t.me/aliona" className="text-gray-500 hover:text-blue-dark transition-colors">
+              <a href="https://t.me/hey_alyon_ka" className="text-gray-500 hover:text-blue-dark transition-colors">
                 <Send size={20} />
               </a>
-              <a href="https://www.instagram.com/einfach_sprechen_community" className="text-gray-500 hover:text-blue-dark transition-colors">
+              <a href="https://www.instagram.com/hey_alyon_ka/?hl=en" className="text-gray-500 hover:text-blue-dark transition-colors">
                 <Instagram size={20} />
-              </a>
-              <a href="https://wa.me/1234567890" className="text-gray-500 hover:text-blue-dark transition-colors">
-                <MessageSquare size={20} />
               </a>
             </div>
           </div>
@@ -29,22 +26,76 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Schnellzugriff</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#mission" className="text-gray-600 hover:text-blue-dark transition-colors">Mission</a>
+                <a 
+                  href="#mission" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('mission')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="text-gray-600 hover:text-blue-dark transition-colors cursor-pointer"
+                >
+                  Mission
+                </a>
               </li>
               <li>
-                <a href="#audience" className="text-gray-600 hover:text-blue-dark transition-colors">Für wen</a>
+                <a 
+                  href="#audience" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('audience')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="text-gray-600 hover:text-blue-dark transition-colors cursor-pointer"
+                >
+                  Für wen
+                </a>
               </li>
               <li>
-                <a href="#team" className="text-gray-600 hover:text-blue-dark transition-colors">Team</a>
+                <a 
+                  href="#team" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('team')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="text-gray-600 hover:text-blue-dark transition-colors cursor-pointer"
+                >
+                  Team
+                </a>
               </li>
               <li>
-                <a href="#process" className="text-gray-600 hover:text-blue-dark transition-colors">Ablauf</a>
+                <a 
+                  href="#process" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="text-gray-600 hover:text-blue-dark transition-colors cursor-pointer"
+                >
+                  Ablauf
+                </a>
               </li>
               <li>
-                <a href="#club" className="text-gray-600 hover:text-blue-dark transition-colors">Sprachklub</a>
+                <a 
+                  href="#club" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('club')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="text-gray-600 hover:text-blue-dark transition-colors cursor-pointer"
+                >
+                  Sprachklub
+                </a>
               </li>
               <li>
-                <a href="#pricing" className="text-gray-600 hover:text-blue-dark transition-colors">Preise</a>
+                <a 
+                  href="#pricing" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="text-gray-600 hover:text-blue-dark transition-colors cursor-pointer"
+                >
+                  Preise
+                </a>
               </li>
             </ul>
           </div>
@@ -55,7 +106,7 @@ const Footer = () => {
               Hast du Fragen zur Community?
             </p>
             <a 
-              href="https://t.me/aliona" 
+              href="https://t.me/hey_alyon_ka" 
               className="inline-flex items-center gap-2 text-blue-dark hover:text-blue transition-colors"
             >
               <Send size={16} />

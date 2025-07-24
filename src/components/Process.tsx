@@ -38,8 +38,71 @@ const Process = () => {
 	};
 
 	return (
-		<section id="process" className="section bg-gradient-to-b from-white to-pastel-lila/30">
-			<div className="container">
+		<section id="process" className="section relative overflow-hidden bg-gradient-to-b from-white to-pastel-orange/15">
+			{/* Background decoration */}
+			<div className="absolute inset-0 -z-10 overflow-hidden">
+				<div className="absolute top-0 left-0 w-[300px] h-[300px] bg-pastel-orange rounded-full filter blur-3xl opacity-20 -translate-y-1/3 -translate-x-1/4"></div>
+				<div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-pastel-lila rounded-full filter blur-3xl opacity-22 translate-y-1/3 translate-x-1/4"></div>
+				<div className="absolute top-1/2 left-1/2 w-[180px] h-[180px] bg-lila-light rounded-full filter blur-2xl opacity-10 -translate-x-1/2 -translate-y-1/2"></div>
+				
+				{/* Decorative squared elements */}
+				<div className="absolute top-1/5 right-1/3 w-12 h-12 bg-pastel-purple rounded-lg rotate-25 animate-float opacity-60"></div>
+				<div className="absolute bottom-1/4 left-1/4 w-9 h-9 bg-pastel-peach rounded-lg rotate-40 animate-float opacity-65"></div>
+				<div className="absolute top-2/3 right-1/6 w-14 h-14 bg-pastel-green rounded-lg rotate-10 animate-float opacity-50"></div>
+				<div className="absolute bottom-1/6 left-2/3 w-10 h-10 bg-pastel-pink rounded-lg rotate-55 animate-float opacity-70"></div>
+				
+				{/* Animated decorative elements */}
+				<motion.div 
+					className="absolute top-1/4 right-1/5 w-8 h-8 bg-pastel-orange/40 rounded-full"
+					animate={{ 
+						opacity: [0.35, 0.85, 0.35],
+						scale: [1, 1.5, 1]
+					}}
+					transition={{ 
+						duration: 6,
+						repeat: Infinity,
+						ease: "easeInOut"
+					}}
+				/>
+				<motion.div 
+					className="absolute top-3/5 left-1/6 w-6 h-6 bg-lila/35"
+					animate={{ 
+						opacity: [0.25, 0.7, 0.25],
+						rotate: [0, 45, 90, 135, 180]
+					}}
+					transition={{ 
+						duration: 9,
+						repeat: Infinity,
+						ease: "linear"
+					}}
+				/>
+				<motion.div 
+					className="absolute bottom-1/5 right-1/4 w-5 h-5 bg-pastel-lila/50 rounded-full"
+					animate={{ 
+						opacity: [0.3, 0.8, 0.3],
+						x: [-12, 12, -12]
+					}}
+					transition={{ 
+						duration: 5.5,
+						repeat: Infinity,
+						ease: "easeInOut"
+					}}
+				/>
+				<motion.div 
+					className="absolute top-2/3 right-1/6 w-7 h-7 bg-orange-light/45 rotate-45"
+					animate={{ 
+						opacity: [0.2, 0.6, 0.2],
+						y: [-8, 8, -8]
+					}}
+					transition={{ 
+						duration: 4,
+						repeat: Infinity,
+						ease: "easeInOut"
+					}}
+				/>
+			</div>
+			
+			<div className="container relative z-10">
 				<motion.h2
 					initial="hidden"
 					whileInView="visible"
@@ -89,97 +152,6 @@ const Process = () => {
 							)}
 						</motion.div>
 					))}
-				</div>
-
-				{/* Call to Action Button */}
-				<div className="flex justify-center mt-8 items-center">
-					<motion.div
-						className="flex flex-row items-center gap-8"
-						initial={false}
-						animate={false}
-					>
-						{/* Left Down Arrow */}
-						<motion.svg
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							strokeWidth={2}
-							stroke="currentColor"
-							className="w-8 h-8 text-orange-500"
-							initial={{ opacity: 0, y: 20 }}
-							whileInView={{
-								opacity: 1,
-								y: [0, -15, 0],
-								transition: {
-									opacity: { duration: 0.6 },
-									y: {
-										repeat: Infinity,
-										repeatType: "loop",
-										duration: 1,
-										ease: "easeInOut",
-									},
-								},
-							}}
-							viewport={{ once: true, amount: 0.3 }}
-						>
-							<path strokeLinecap="round" strokeLinejoin="round" d="M5 9l7 7 7-7" />
-						</motion.svg>
-						{/* Button */}
-						<motion.a
-							href="#pricing"
-							onClick={e => {
-								e.preventDefault();
-								const pricing = document.getElementById("pricing");
-								if (pricing) {
-									pricing.scrollIntoView({ behavior: "smooth" });
-								}
-							}}
-							initial={{ opacity: 0, y: 20 }}
-							whileInView={{
-								opacity: 1,
-								y: [0, -15, 0],
-								transition: {
-									opacity: { duration: 0.6 },
-									y: {
-										repeat: Infinity,
-										repeatType: "loop",
-										duration: 1,
-										ease: "easeInOut",
-									},
-								},
-							}}
-							viewport={{ once: true, amount: 0.3 }}
-							className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full shadow-lg text-lg transition-colors duration-200 inline-block text-center"
-						>
-							Jetzt beitreten! 
-						</motion.a>
-						{/* Right Down Arrow */}
-						<motion.svg
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							strokeWidth={2}
-							stroke="currentColor"
-							className="w-8 h-8 text-orange-500"
-							initial={{ opacity: 0, y: 20 }}
-							whileInView={{
-								opacity: 1,
-								y: [0, -15, 0],
-								transition: {
-									opacity: { duration: 0.6 },
-									y: {
-										repeat: Infinity,
-										repeatType: "loop",
-										duration: 1,
-										ease: "easeInOut",
-									},
-								},
-							}}
-							viewport={{ once: true, amount: 0.3 }}
-						>
-							<path strokeLinecap="round" strokeLinejoin="round" d="M5 9l7 7 7-7" />
-						</motion.svg>
-					</motion.div>
 				</div>
 			</div>
 		</section>
