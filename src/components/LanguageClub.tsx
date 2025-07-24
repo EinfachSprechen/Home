@@ -5,6 +5,8 @@ import { useState } from 'react';
 
 const LanguageClub = () => {
   const [showPlatformDetails, setShowPlatformDetails] = useState(false);
+  const [showWeeklyActivities, setShowWeeklyActivities] = useState(false);
+  const [showBenefits, setShowBenefits] = useState(false);
 
   const activities = [
     {
@@ -93,90 +95,130 @@ const LanguageClub = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Left Column - Was du jede Woche machst */}
                 <div>
-                  <h4 className="text-lg font-medium mb-4">📅 Was du jede Woche machst:</h4>
-                  
-                  <div className="space-y-4">
-                    <div className="flex">
-                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-pastel-lila flex items-center justify-center mr-3 mt-1">
-                        <div className="w-2 h-2 rounded-full bg-lila-dark"></div>
-                      </div>
-                      <div>
-                        <p className="text-gray-600 text-sm">du erhältst spannende Impulse zu aktuellen, echten Themen</p>
-                      </div>
-                    </div>
-                    <div className="flex">
-                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-pastel-lila flex items-center justify-center mr-3 mt-1">
-                        <div className="w-2 h-2 rounded-full bg-lila-dark"></div>
-                      </div>
-                      <div>
-                        <p className="text-gray-600 text-sm">du liest, hörst, reflektierst, diskutierst</p>
-                      </div>
-                    </div>
-                    <div className="flex">
-                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-pastel-lila flex items-center justify-center mr-3 mt-1">
-                        <div className="w-2 h-2 rounded-full bg-lila-dark"></div>
-                      </div>
-                      <div>
-                        <p className="text-gray-600 text-sm">du übst neue Wörter im Kontext</p>
-                      </div>
-                    </div>
-                    <div className="flex">
-                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-pastel-lila flex items-center justify-center mr-3 mt-1">
-                        <div className="w-2 h-2 rounded-full bg-lila-dark"></div>
-                      </div>
-                      <div>
-                        <p className="text-gray-600 text-sm">du nimmst Audio- oder Videonachrichten auf (wenn du möchtest!)</p>
-                      </div>
-                    </div>
-                    <div className="flex">
-                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-pastel-lila flex items-center justify-center mr-3 mt-1">
-                        <div className="w-2 h-2 rounded-full bg-lila-dark"></div>
-                      </div>
-                      <div>
-                        <p className="text-gray-600 text-sm">du bekommst jeden Freitag ein Quizlet-Wörterset mit nützlichen Vokabeln</p>
-                      </div>
-                    </div>
-                    <div className="flex">
-                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-pastel-lila flex items-center justify-center mr-3 mt-1">
-                        <div className="w-2 h-2 rounded-full bg-lila-dark"></div>
-                      </div>
-                      <div>
-                        <p className="text-gray-600 text-sm">du sprichst am Samstag live im Sprachklub mit einer Muttersprachlerin</p>
-                      </div>
+                  <div 
+                    className="flex items-center justify-between cursor-pointer"
+                    onClick={() => setShowWeeklyActivities(!showWeeklyActivities)}
+                  >
+                    <h4 className="text-lg font-medium mb-4">📅 Was du jede Woche machst:</h4>
+                    <div className={`transform transition-transform duration-200 ${showWeeklyActivities ? 'rotate-180' : ''}`}>
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                      </svg>
                     </div>
                   </div>
+                  
+                  {showWeeklyActivities && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="mt-4"
+                    >
+                      <div className="space-y-4">
+                        <div className="flex">
+                          <div className="flex-shrink-0 w-6 h-6 rounded-full bg-pastel-lila flex items-center justify-center mr-3 mt-1">
+                            <div className="w-2 h-2 rounded-full bg-lila-dark"></div>
+                          </div>
+                          <div>
+                            <p className="text-gray-600 text-sm">du erhältst spannende Impulse zu aktuellen, echten Themen</p>
+                          </div>
+                        </div>
+                        <div className="flex">
+                          <div className="flex-shrink-0 w-6 h-6 rounded-full bg-pastel-lila flex items-center justify-center mr-3 mt-1">
+                            <div className="w-2 h-2 rounded-full bg-lila-dark"></div>
+                          </div>
+                          <div>
+                            <p className="text-gray-600 text-sm">du liest, hörst, reflektierst, diskutierst</p>
+                          </div>
+                        </div>
+                        <div className="flex">
+                          <div className="flex-shrink-0 w-6 h-6 rounded-full bg-pastel-lila flex items-center justify-center mr-3 mt-1">
+                            <div className="w-2 h-2 rounded-full bg-lila-dark"></div>
+                          </div>
+                          <div>
+                            <p className="text-gray-600 text-sm">du übst neue Wörter im Kontext</p>
+                          </div>
+                        </div>
+                        <div className="flex">
+                          <div className="flex-shrink-0 w-6 h-6 rounded-full bg-pastel-lila flex items-center justify-center mr-3 mt-1">
+                            <div className="w-2 h-2 rounded-full bg-lila-dark"></div>
+                          </div>
+                          <div>
+                            <p className="text-gray-600 text-sm">du nimmst Audio- oder Videonachrichten auf (wenn du möchtest!)</p>
+                          </div>
+                        </div>
+                        <div className="flex">
+                          <div className="flex-shrink-0 w-6 h-6 rounded-full bg-pastel-lila flex items-center justify-center mr-3 mt-1">
+                            <div className="w-2 h-2 rounded-full bg-lila-dark"></div>
+                          </div>
+                          <div>
+                            <p className="text-gray-600 text-sm">du bekommst jeden Freitag ein Quizlet-Wörterset mit nützlichen Vokabeln</p>
+                          </div>
+                        </div>
+                        <div className="flex">
+                          <div className="flex-shrink-0 w-6 h-6 rounded-full bg-pastel-lila flex items-center justify-center mr-3 mt-1">
+                            <div className="w-2 h-2 rounded-full bg-lila-dark"></div>
+                          </div>
+                          <div>
+                            <p className="text-gray-600 text-sm">du sprichst am Samstag live im Sprachklub mit einer Muttersprachlerin</p>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
                 </div>
                 
                 {/* Right Column - Was bringt dir das? */}
                 <div>
-                  <h4 className="text-lg font-medium mb-4">🎯 Was bringt dir das?</h4>
-                  
-                  <div className="space-y-4">
-                    <div className="flex">
-                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-pastel-lila flex items-center justify-center mr-3 mt-1">
-                        <div className="w-2 h-2 rounded-full bg-lila-dark"></div>
-                      </div>
-                      <div>
-                        <p className="text-gray-600 text-sm">Du sprichst sicherer und natürlicher.</p>
-                      </div>
-                    </div>
-                    <div className="flex">
-                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-pastel-lila flex items-center justify-center mr-3 mt-1">
-                        <div className="w-2 h-2 rounded-full bg-lila-dark"></div>
-                      </div>
-                      <div>
-                        <p className="text-gray-600 text-sm">Du bleibst motiviert, weil du Fortschritte spürst.</p>
-                      </div>
-                    </div>
-                    <div className="flex">
-                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-pastel-lila flex items-center justify-center mr-3 mt-1">
-                        <div className="w-2 h-2 rounded-full bg-lila-dark"></div>
-                      </div>
-                      <div>
-                        <p className="text-gray-600 text-sm">Du wirst Teil einer Community, die dich wirklich versteht.</p>
-                      </div>
+                  <div 
+                    className="flex items-center justify-between cursor-pointer"
+                    onClick={() => setShowBenefits(!showBenefits)}
+                  >
+                    <h4 className="text-lg font-medium mb-4">🎯 Was bringt dir das?</h4>
+                    <div className={`transform transition-transform duration-200 ${showBenefits ? 'rotate-180' : ''}`}>
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                      </svg>
                     </div>
                   </div>
+                  
+                  {showBenefits && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="mt-4"
+                    >
+                      <div className="space-y-4">
+                        <div className="flex">
+                          <div className="flex-shrink-0 w-6 h-6 rounded-full bg-pastel-lila flex items-center justify-center mr-3 mt-1">
+                            <div className="w-2 h-2 rounded-full bg-lila-dark"></div>
+                          </div>
+                          <div>
+                            <p className="text-gray-600 text-sm">Du sprichst sicherer und natürlicher.</p>
+                          </div>
+                        </div>
+                        <div className="flex">
+                          <div className="flex-shrink-0 w-6 h-6 rounded-full bg-pastel-lila flex items-center justify-center mr-3 mt-1">
+                            <div className="w-2 h-2 rounded-full bg-lila-dark"></div>
+                          </div>
+                          <div>
+                            <p className="text-gray-600 text-sm">Du bleibst motiviert, weil du Fortschritte spürst.</p>
+                          </div>
+                        </div>
+                        <div className="flex">
+                          <div className="flex-shrink-0 w-6 h-6 rounded-full bg-pastel-lila flex items-center justify-center mr-3 mt-1">
+                            <div className="w-2 h-2 rounded-full bg-lila-dark"></div>
+                          </div>
+                          <div>
+                            <p className="text-gray-600 text-sm">Du wirst Teil einer Community, die dich wirklich versteht.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
                 </div>
               </div>
               
