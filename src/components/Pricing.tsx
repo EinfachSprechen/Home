@@ -148,6 +148,11 @@ const Pricing = () => (
         <h2 className="section-title mb-14 text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900">
           Preise & Mitgliedschaft
         </h2>
+        <div className="max-w-4xl mx-auto mb-8 p-6 bg-orange-50 rounded-xl border-l-4 border-orange-400">
+          <p className="text-lg md:text-xl text-gray-800 font-medium text-center">
+            <span className="font-semibold text-orange-600">Wähle dein Paket aus</span> und du wirst kontaktiert, um beizutreten.
+          </p>
+        </div>
         <p className="section-subtitle mb-10 text-xl md:text-2xl text-gray-600 font-medium">
           Lerne regelmäßig und entspannt – du bestimmst die Dauer.<br />
           <span className="text-gray-600 font-normal">
@@ -229,9 +234,14 @@ const Pricing = () => (
               <ul className="space-y-3 mb-6">
                 {/* Features removed to avoid repetition with the section above */}
               </ul>
-              <button className="w-full py-2 px-4 rounded-lg transition-colors bg-orange-500 hover:bg-orange-600 text-white">
+              <a 
+                href="https://tally.so/r/3E7Mo4" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-full py-2 px-4 rounded-lg transition-colors bg-orange-500 hover:bg-orange-600 text-white text-center block"
+              >
                 Auswählen
-              </button>
+              </a>
             </div>
           </motion.div>
         ))}
@@ -293,9 +303,14 @@ const Pricing = () => (
                       );
                     })()}
                     <p className="text-gray-600 mb-6 text-base min-h-[48px] text-center break-words px-2">{plan.description}</p>
-                    <button className="mt-auto w-[90%] py-2 mb-4 rounded-lg border-2 border-current text-base font-semibold text-gray-900 bg-white transition-colors duration-200 group-hover:bg-orange-500 group-hover:text-white hover:bg-orange-500 hover:text-white">
+                    <a 
+                      href="https://tally.so/r/3E7Mo4" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="mt-auto w-[90%] py-2 mb-4 rounded-lg border-2 border-current text-base font-semibold text-gray-900 bg-white transition-colors duration-200 group-hover:bg-orange-500 group-hover:text-white hover:bg-orange-500 hover:text-white text-center block"
+                    >
                       Auswählen
-                    </button>
+                    </a>
                   </motion.div>
                 </CarouselItem>
               );
@@ -354,9 +369,14 @@ const Pricing = () => (
                 );
               })()}
               <p className="text-gray-600 mb-6 text-base min-h-[48px] text-center break-words px-2">{plan.description}</p>
-              <button className="mt-auto w-[90%] py-2 mb-4 rounded-lg border-2 border-current text-base font-semibold text-gray-900 bg-white transition-colors duration-200 group-hover:bg-orange-500 group-hover:text-white hover:bg-orange-500 hover:text-white">
+              <a 
+                href="https://tally.so/r/3E7Mo4" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="mt-auto w-[90%] py-2 mb-4 rounded-lg border-2 border-current text-base font-semibold text-gray-900 bg-white transition-colors duration-200 group-hover:bg-orange-500 group-hover:text-white hover:bg-orange-500 hover:text-white text-center block"
+              >
                 Auswählen
-              </button>
+              </a>
             </motion.div>
           );
         })}
