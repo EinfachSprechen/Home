@@ -5,6 +5,7 @@ import heroImage from '/images/hero-image.png';
 const Hero = () => {
   return (
     <section
+      id="hero"
       className="relative min-h-screen flex items-center pt-48 pb-0 overflow-hidden"
       style={{ marginTop: "-20%" }}
     >
@@ -15,7 +16,7 @@ const Hero = () => {
       </div>
       
       <div className="container" style={{ marginBottom: '-3%' }}>
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-12 items-center">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -71,14 +72,13 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-            className="relative"
+            className="relative mt-4 md:mt-0"
           >
             <motion.div
-              className="relative z-10 rounded-2xl overflow-visible flex items-center"
-              style={{ justifyContent: "flex-start", marginLeft: "-30%" }} // <-- adjust marginLeft as needed
+              className="relative z-10 rounded-2xl overflow-visible flex items-center justify-center md:justify-start md:-ml-[30%]"
               initial={{ rotate: 0 }}
               animate={{ 
-                rotate: [0, 10, -10, 10]
+                rotate: [0, 10, -10, 0]
               }}
               transition={{
                 duration: 15, // 15 seconds for pendulum motion
@@ -89,7 +89,7 @@ const Hero = () => {
               <img 
                 src={heroImage} 
                 alt="Deutschlernende Community" 
-                className="w-full h-auto object-cover bg-transparent border-none shadow-none scale-[0.6] transition-transform duration-300"
+                className="w-full h-auto object-cover bg-transparent border-none shadow-none scale-[0.95] md:scale-[0.6] transition-transform duration-300"
               />
             </motion.div>
 
@@ -100,14 +100,15 @@ const Hero = () => {
           </motion.div>
         </div>
         
-        <div className="md:hidden mt-12">
+        {/* Mobile contact buttons with proper spacing */}
+        <div className="md:hidden mt-4 mb-16 relative z-30">
           <ContactButtons className="justify-center" />
         </div>
       </div>
-      {/* Pulsing down arrow at the bottom */}
-      <div className="absolute left-1/2 bottom-6 transform -translate-x-1/2 z-20">
+      {/* Pulsing down arrow at the bottom - hidden on mobile to avoid overlap */}
+      <div className="hidden md:block absolute left-1/2 bottom-6 transform -translate-x-1/2 z-20">
         <svg
-          className="w-12 h-12 text-orange-400 animate-bounce" // 50% bigger than w-8 h-8
+          className="w-12 h-12 text-orange-400 animate-bounce"
           fill="none"
           stroke="currentColor"
           strokeWidth="2"

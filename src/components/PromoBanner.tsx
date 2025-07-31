@@ -1,10 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Timer, X } from "lucide-react";
 
 const PromoBanner = () => {
   const [visible, setVisible] = useState(true);
+  const [isHidden, setIsHidden] = useState(false);
 
-  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  useEffect(() => {
+    const handleScroll = () => {
+      // Only apply scroll behavior on mobile
+      if (window.innerWidth >= 768) return; // md breakpoint
+      
+      const pricing = document.getElementById("pricing");
+      if (!pricing) return;
+      
+      const pricingRect = pricing.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const scrollY = window.scrollY;
+      
+      // Hide as soon as user scrolls more than 100px from top
+      const shouldHideOnScroll = scrollY > 100;
+      
+      // Show when pricing section is in view
+      const pricingInView = pricingRect.top < windowHeight && pricingRect.bottom > 0;
+      
+      if (shouldHideOnScroll && !pricingInView) {
+        setIsHidden(true);
+      } else if (!shouldHideOnScroll || pricingInView) {
+        setIsHidden(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial state
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const pricing = document.getElementById("pricing");
     if (pricing) {
@@ -17,10 +49,11 @@ const PromoBanner = () => {
   return (
     <div
       className={`
-        fixed z-40 transition-transform duration-300 ease-in-out hover:scale-105
+        fixed z-40 transition-all duration-500 ease-in-out hover:scale-105
         w-[90vw] max-w-xs
         bottom-4 left-1/2 -translate-x-1/2
         md:top-16 md:right-8 md:left-auto md:bottom-auto md:translate-x-0
+        ${isHidden ? 'md:translate-y-0 translate-y-32 opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'}
       `}
       style={{ fontSize: "70%" }} // 50% smaller on mobile, normal on desktop
     >
@@ -53,7 +86,7 @@ const PromoBanner = () => {
             <span className="text-lg font-extrabold text-orange-500">9€</span>
             <span className="text-xs text-gray-400 line-through">15€</span>
             <span className="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded-full">
-              -60% gespart
+              -40% gespart
             </span>
           </div>
           <p className="text-xs font-semibold text-black dark:text-white mb-2">
@@ -61,7 +94,7 @@ const PromoBanner = () => {
           </p>
           <a
             href="#pricing"
-            onClick={handleScroll}
+            onClick={handleScrollToSection}
             className="mt-auto inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-1.5 px-3 rounded-lg transition-colors duration-200 text-center text-xs"
           >
             Jetzt starten

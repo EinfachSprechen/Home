@@ -8,7 +8,7 @@ const plans = [
     name: "Probewoche¹",
     duration: "1 Woche",
     price: "9",
-    description: "Nur für neue Mitglieder & bei bestehendem Instagram-Follow @hey_alyon_ka",
+    description: "¹Nur für neue Mitglieder & bei bestehendem Instagram-Follow @hey_alyon_ka",
     features: [
       "Zugang zur Telegram-Gruppe mit täglichen Lernimpulsen",
       "1x wöchentlich: Sprechklub mit Muttersprachler:in",
@@ -230,6 +230,11 @@ const Pricing = () => (
                 <span className="text-3xl font-bold">{plan.price}</span>
                 <span className="text-gray-500">€</span>
               </div>
+              {plan.name === "Probewoche¹" && (
+                <div className="mb-2 inline-block bg-green-600 text-white text-xs font-bold rounded-full px-3 py-1 shadow">
+                  Spare 6€
+                </div>
+              )}
               <p className="text-gray-600 mb-6">{plan.description}</p>
               <ul className="space-y-3 mb-6">
                 {/* Features removed to avoid repetition with the section above */}
@@ -267,6 +272,7 @@ const Pricing = () => (
               ];
               const icon = savingsIcons[index % savingsIcons.length];
               let saveUpTo = 0;
+              if (plan.name === "Probewoche¹") saveUpTo = 6;
               if (plan.name === "Dranbleiben") saveUpTo = 22;
               if (plan.name === "Sprachflow") saveUpTo = 48;
               return (
@@ -290,11 +296,12 @@ const Pricing = () => (
                     </div>
                     {(() => {
                       let saveUpTo = 0;
+                      if (plan.name === "Probewoche¹") saveUpTo = 6;
                       if (plan.name === "Dranbleiben") saveUpTo = 22;
                       if (plan.name === "Sprachflow") saveUpTo = 48;
                       return saveUpTo > 0 ? (
                         <div className="mb-2 inline-block bg-green-600 text-white text-xs font-bold rounded-full px-3 py-1 shadow z-10">
-                          Spare bis zu {saveUpTo}€
+                          Spare {saveUpTo}€
                         </div>
                       ) : (
                         <div className="mb-2 inline-block bg-transparent text-transparent text-xs font-bold rounded-full px-3 py-1 z-10">
@@ -356,11 +363,12 @@ const Pricing = () => (
               {/* Savings below price */}
               {(() => {
                 let saveUpTo = 0;
+                if (plan.name === "Probewoche¹") saveUpTo = 6;
                 if (plan.name === "Dranbleiben") saveUpTo = 22;
                 if (plan.name === "Sprachflow") saveUpTo = 48;
                 return saveUpTo > 0 ? (
                   <div className="mb-2 inline-block bg-green-600 text-white text-xs font-bold rounded-full px-3 py-1 shadow z-10">
-                    Spare bis zu {saveUpTo}€
+                    Spare {saveUpTo}€
                   </div>
                 ) : (
                   <div className="mb-2 inline-block bg-transparent text-transparent text-xs font-bold rounded-full px-3 py-1 z-10">
