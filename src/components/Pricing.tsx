@@ -2,6 +2,7 @@ import { Check, ArrowRight, ArrowLeft, MousePointerClick } from 'lucide-react';
 import { motion } from 'framer-motion';
 import ContactButtons from './ContactButtons';
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
+import { useMemo } from 'react';
 
 const plans = [
   {
@@ -60,7 +61,37 @@ const plans = [
   }
 ];
 
-const Pricing = () => (
+// Optimized savings icons - simpler SVGs for better performance
+const savingsIcons = [
+  <div key="1" className="w-8 h-8 rounded-full bg-gray-400 flex items-center justify-center">
+    <span className="text-white text-xs font-bold">1</span>
+  </div>,
+  <div key="2" className="w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center">
+    <span className="text-white text-xs font-bold">2</span>
+  </div>,
+  <div key="3" className="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center">
+    <span className="text-white text-xs font-bold">3</span>
+  </div>,
+  <div key="4" className="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center">
+    <span className="text-white text-xs font-bold">4</span>
+  </div>
+];
+
+// Pre-calculate savings amounts to avoid runtime calculations
+const getSavings = (planName: string) => {
+  switch (planName) {
+    case "Probewoche¹": return 6;
+    case "Dranbleiben": return 22;
+    case "Sprachflow": return 48;
+    default: return 0;
+  }
+};
+
+const Pricing = () => {
+  // Memoize plans slice to prevent unnecessary re-calculations
+  const otherPlans = useMemo(() => plans.slice(1), []);
+  
+  return (
   <section id="pricing" className="section relative overflow-hidden bg-gradient-to-b from-pastel-orange/10 to-pastel-lila/15">
     {/* Background decoration */}
     <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -74,9 +105,9 @@ const Pricing = () => (
       <div className="absolute top-3/4 left-1/6 w-11 h-11 bg-pastel-blue rounded-lg rotate-15 animate-float opacity-65"></div>
       <div className="absolute top-1/3 right-1/4 w-8 h-8 bg-pastel-pink rounded-lg rotate-50 animate-float opacity-70"></div>
       
-      {/* Animated decorative elements */}
+      {/* Animated decorative elements - reduced for mobile performance */}
       <motion.div 
-        className="absolute top-1/5 left-1/6 w-9 h-9 bg-pastel-lila/40 rounded-full"
+        className="absolute top-1/5 left-1/6 w-9 h-9 bg-pastel-lila/40 rounded-full hidden md:block"
         animate={{ 
           opacity: [0.3, 0.8, 0.3],
           scale: [0.8, 1.6, 0.8]
@@ -88,7 +119,7 @@ const Pricing = () => (
         }}
       />
       <motion.div 
-        className="absolute top-1/2 right-1/5 w-6 h-6 bg-orange-light/50"
+        className="absolute top-1/2 right-1/5 w-6 h-6 bg-orange-light/50 hidden md:block"
         animate={{ 
           opacity: [0.2, 0.7, 0.2],
           rotate: [0, 360]
@@ -100,7 +131,7 @@ const Pricing = () => (
         }}
       />
       <motion.div 
-        className="absolute bottom-1/3 left-1/4 w-7 h-7 bg-pastel-orange/45 rounded-full"
+        className="absolute bottom-1/3 left-1/4 w-7 h-7 bg-pastel-orange/45 rounded-full hidden md:block"
         animate={{ 
           opacity: [0.4, 0.9, 0.4],
           y: [-18, 18, -18]
@@ -112,7 +143,7 @@ const Pricing = () => (
         }}
       />
       <motion.div 
-        className="absolute top-2/3 right-1/3 w-5 h-5 bg-lila/40 rotate-45"
+        className="absolute top-2/3 right-1/3 w-5 h-5 bg-lila/40 rotate-45 hidden md:block"
         animate={{ 
           opacity: [0.25, 0.75, 0.25],
           x: [-14, 14, -14]
@@ -124,7 +155,7 @@ const Pricing = () => (
         }}
       />
       <motion.div 
-        className="absolute top-1/4 right-1/2 w-4 h-4 bg-pastel-lila/55 rounded-full"
+        className="absolute top-1/4 right-1/2 w-4 h-4 bg-pastel-lila/55 rounded-full hidden md:block"
         animate={{ 
           opacity: [0.35, 0.85, 0.35],
           scale: [1, 1.3, 1]
@@ -142,7 +173,7 @@ const Pricing = () => (
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.4 }} // Reduced from 0.6 for snappier feel
         className="text-center mb-14"
       >
         <h2 className="section-title mb-14 text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900">
@@ -262,26 +293,17 @@ const Pricing = () => (
         </div>
         <Carousel>
           <CarouselContent>
-            {plans.slice(1).map((plan, index) => {
-              // Icons for savings level (from 1 to 4)
-              const savingsIcons = [
-                <svg key="1" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" /></svg>,
-                <svg key="2" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="2" fill="none" /></svg>,
-                <svg key="3" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="2" stroke="currentColor" strokeWidth="2" fill="none" /></svg>,
-                <svg key="4" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="2" stroke="currentColor" strokeWidth="2" fill="none" /><path d="M12 2v20M2 12h20" stroke="currentColor" strokeWidth="2" /></svg>
-              ];
+            {otherPlans.map((plan, index) => {
               const icon = savingsIcons[index % savingsIcons.length];
-              let saveUpTo = 0;
-              if (plan.name === "Probewoche¹") saveUpTo = 6;
-              if (plan.name === "Dranbleiben") saveUpTo = 22;
-              if (plan.name === "Sprachflow") saveUpTo = 48;
+              const saveUpTo = getSavings(plan.name);
+              
               return (
                 <CarouselItem key={plan.name} className={`!basis-[80vw] max-w-[340px] ${index === 0 ? 'ml-4' : ''} mr-6`}>
                   <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    transition={{ duration: 0.3, delay: index * 0.05 }} // Reduced duration and delay
                     className={`relative flex flex-col items-center bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg hover:border-orange-400 hover:bg-orange-50 transition-all duration-300 flex-1 min-w-[220px] max-w-full mx-2 p-0 z-10 pt-10 group`}
                     style={{ boxSizing: 'border-box' }}
                   >
@@ -294,21 +316,15 @@ const Pricing = () => (
                       <span className="text-3xl font-bold text-gray-900">{plan.price}</span>
                       <span className="text-xs text-gray-500">€/Woche</span>
                     </div>
-                    {(() => {
-                      let saveUpTo = 0;
-                      if (plan.name === "Probewoche¹") saveUpTo = 6;
-                      if (plan.name === "Dranbleiben") saveUpTo = 22;
-                      if (plan.name === "Sprachflow") saveUpTo = 48;
-                      return saveUpTo > 0 ? (
-                        <div className="mb-2 inline-block bg-green-600 text-white text-xs font-bold rounded-full px-3 py-1 shadow z-10">
-                          Spare {saveUpTo}€
-                        </div>
-                      ) : (
-                        <div className="mb-2 inline-block bg-transparent text-transparent text-xs font-bold rounded-full px-3 py-1 z-10">
-                          Spare bis zu 0€
-                        </div>
-                      );
-                    })()}
+                    {saveUpTo > 0 ? (
+                      <div className="mb-2 inline-block bg-green-600 text-white text-xs font-bold rounded-full px-3 py-1 shadow z-10">
+                        Spare {saveUpTo}€
+                      </div>
+                    ) : (
+                      <div className="mb-2 inline-block bg-transparent text-transparent text-xs font-bold rounded-full px-3 py-1 z-10">
+                        Spare 0€
+                      </div>
+                    )}
                     <p className="text-gray-600 mb-6 text-base min-h-[48px] text-center break-words px-2">{plan.description}</p>
                     <a 
                       href="https://tally.so/r/3E7Mo4" 
@@ -327,26 +343,17 @@ const Pricing = () => (
       </div>
       {/* Desktop flex row */}
       <div className="hidden md:flex flex-row gap-6 w-full mb-16 overflow-x-auto justify-center min-h-[420px]">
-        {plans.slice(1).map((plan, index) => {
-          // Icons for savings level (from 1 to 4)
-          const savingsIcons = [
-            <svg key="1" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" /></svg>,
-            <svg key="2" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="2" fill="none" /></svg>,
-            <svg key="3" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="2" stroke="currentColor" strokeWidth="2" fill="none" /></svg>,
-            <svg key="4" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="2" stroke="currentColor" strokeWidth="2" fill="none" /><path d="M12 2v20M2 12h20" stroke="currentColor" strokeWidth="2" /></svg>
-          ];
+        {otherPlans.map((plan, index) => {
           const icon = savingsIcons[index % savingsIcons.length];
-          // Adjust savings for Dranbleiben
-          let saveUpTo = 0;
-          if (plan.name === "Dranbleiben") saveUpTo = 22;
-          if (plan.name === "Sprachflow") saveUpTo = 48;
+          const saveUpTo = getSavings(plan.name);
+          
           return (
             <motion.div
               key={plan.name}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.3, delay: index * 0.05 }} // Reduced timing
               className={`relative flex flex-col items-center bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg hover:border-orange-400 hover:bg-orange-50 transition-all duration-300 flex-1 min-w-[220px] max-w-full mx-2 p-0 z-10 pt-10 group`}
               style={{ boxSizing: 'border-box' }}
             >
@@ -361,21 +368,15 @@ const Pricing = () => (
                 <span className="text-xs text-gray-500">€/Woche</span>
               </div>
               {/* Savings below price */}
-              {(() => {
-                let saveUpTo = 0;
-                if (plan.name === "Probewoche¹") saveUpTo = 6;
-                if (plan.name === "Dranbleiben") saveUpTo = 22;
-                if (plan.name === "Sprachflow") saveUpTo = 48;
-                return saveUpTo > 0 ? (
-                  <div className="mb-2 inline-block bg-green-600 text-white text-xs font-bold rounded-full px-3 py-1 shadow z-10">
-                    Spare {saveUpTo}€
-                  </div>
-                ) : (
-                  <div className="mb-2 inline-block bg-transparent text-transparent text-xs font-bold rounded-full px-3 py-1 z-10">
-                    Spare bis zu 0€
-                  </div>
-                );
-              })()}
+              {saveUpTo > 0 ? (
+                <div className="mb-2 inline-block bg-green-600 text-white text-xs font-bold rounded-full px-3 py-1 shadow z-10">
+                  Spare {saveUpTo}€
+                </div>
+              ) : (
+                <div className="mb-2 inline-block bg-transparent text-transparent text-xs font-bold rounded-full px-3 py-1 z-10">
+                  Spare 0€
+                </div>
+              )}
               <p className="text-gray-600 mb-6 text-base min-h-[48px] text-center break-words px-2">{plan.description}</p>
               <a 
                 href="https://tally.so/r/3E7Mo4" 
@@ -412,5 +413,6 @@ const Pricing = () => (
     </div>
   </section>
 );
+};
 
 export default Pricing;
