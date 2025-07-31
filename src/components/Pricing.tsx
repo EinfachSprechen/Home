@@ -61,20 +61,12 @@ const plans = [
   }
 ];
 
-// Optimized savings icons - simpler SVGs for better performance
+// Original pricing icons for better visual appeal
 const savingsIcons = [
-  <div key="1" className="w-8 h-8 rounded-full bg-gray-400 flex items-center justify-center">
-    <span className="text-white text-xs font-bold">1</span>
-  </div>,
-  <div key="2" className="w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center">
-    <span className="text-white text-xs font-bold">2</span>
-  </div>,
-  <div key="3" className="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center">
-    <span className="text-white text-xs font-bold">3</span>
-  </div>,
-  <div key="4" className="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center">
-    <span className="text-white text-xs font-bold">4</span>
-  </div>
+  <svg key="1" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" /></svg>,
+  <svg key="2" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="2" fill="none" /></svg>,
+  <svg key="3" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="2" stroke="currentColor" strokeWidth="2" fill="none" /></svg>,
+  <svg key="4" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="2" stroke="currentColor" strokeWidth="2" fill="none" /><path d="M12 2v20M2 12h20" stroke="currentColor" strokeWidth="2" /></svg>
 ];
 
 // Pre-calculate savings amounts to avoid runtime calculations
@@ -99,71 +91,36 @@ const Pricing = () => {
       <div className="absolute bottom-0 left-0 w-[450px] h-[450px] bg-pastel-orange rounded-full filter blur-3xl opacity-18 translate-y-1/3 -translate-x-1/3"></div>
       <div className="absolute top-1/3 left-1/3 w-[200px] h-[200px] bg-orange-light rounded-full filter blur-2xl opacity-12"></div>
       
-      {/* Decorative squared elements */}
-      <div className="absolute top-1/6 left-1/4 w-10 h-10 bg-pastel-peach rounded-lg rotate-45 animate-float opacity-60"></div>
-      <div className="absolute bottom-1/4 right-1/6 w-13 h-13 bg-pastel-green rounded-lg rotate-30 animate-float opacity-55"></div>
-      <div className="absolute top-3/4 left-1/6 w-11 h-11 bg-pastel-blue rounded-lg rotate-15 animate-float opacity-65"></div>
-      <div className="absolute top-1/3 right-1/4 w-8 h-8 bg-pastel-pink rounded-lg rotate-50 animate-float opacity-70"></div>
+      {/* Decorative squared elements - static for better mobile performance */}
+      <div className="absolute top-1/6 left-1/4 w-10 h-10 bg-pastel-peach rounded-lg rotate-45 opacity-60 hidden md:block"></div>
+      <div className="absolute bottom-1/4 right-1/6 w-13 h-13 bg-pastel-green rounded-lg rotate-30 opacity-55 hidden md:block"></div>
+      <div className="absolute top-3/4 left-1/6 w-11 h-11 bg-pastel-blue rounded-lg rotate-15 opacity-65 hidden md:block"></div>
+      <div className="absolute top-1/3 right-1/4 w-8 h-8 bg-pastel-pink rounded-lg rotate-50 opacity-70 hidden md:block"></div>
       
-      {/* Animated decorative elements - reduced for mobile performance */}
+      {/* Animated decorative elements - simplified for mobile performance */}
       <motion.div 
         className="absolute top-1/5 left-1/6 w-9 h-9 bg-pastel-lila/40 rounded-full hidden md:block"
         animate={{ 
-          opacity: [0.3, 0.8, 0.3],
-          scale: [0.8, 1.6, 0.8]
+          opacity: [0.3, 0.6, 0.3],
+          scale: [1, 1.2, 1]
         }}
         transition={{ 
-          duration: 7.5,
+          duration: 4,
           repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      <motion.div 
-        className="absolute top-1/2 right-1/5 w-6 h-6 bg-orange-light/50 hidden md:block"
-        animate={{ 
-          opacity: [0.2, 0.7, 0.2],
-          rotate: [0, 360]
-        }}
-        transition={{ 
-          duration: 12,
-          repeat: Infinity,
-          ease: "linear"
+          ease: "easeInOut",
+          repeatDelay: 1
         }}
       />
       <motion.div 
         className="absolute bottom-1/3 left-1/4 w-7 h-7 bg-pastel-orange/45 rounded-full hidden md:block"
         animate={{ 
-          opacity: [0.4, 0.9, 0.4],
-          y: [-18, 18, -18]
+          opacity: [0.4, 0.7, 0.4]
         }}
         transition={{ 
-          duration: 6.5,
+          duration: 3,
           repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      <motion.div 
-        className="absolute top-2/3 right-1/3 w-5 h-5 bg-lila/40 rotate-45 hidden md:block"
-        animate={{ 
-          opacity: [0.25, 0.75, 0.25],
-          x: [-14, 14, -14]
-        }}
-        transition={{ 
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      <motion.div 
-        className="absolute top-1/4 right-1/2 w-4 h-4 bg-pastel-lila/55 rounded-full hidden md:block"
-        animate={{ 
-          opacity: [0.35, 0.85, 0.35],
-          scale: [1, 1.3, 1]
-        }}
-        transition={{ 
-          duration: 5,
-          repeat: Infinity,
-          ease: "easeInOut"
+          ease: "easeInOut",
+          repeatDelay: 0.5
         }}
       />
     </div>
@@ -173,7 +130,7 @@ const Pricing = () => {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.4 }} // Reduced from 0.6 for snappier feel
+        transition={{ duration: 0.3, ease: "easeOut" }} // Faster, simpler animation
         className="text-center mb-14"
       >
         <h2 className="section-title mb-14 text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900">
@@ -241,10 +198,10 @@ const Pricing = () => {
         {plans.slice(0, 1).map((plan, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            transition={{ duration: 0.25, ease: "easeOut" }} // Simplified animation
             className={`bg-white rounded-xl shadow-md overflow-hidden transition-all hover:shadow-lg hover:-translate-y-2 duration-300 min-w-[270px] ${
               plan.highlight ? 'ring-2 ring-orange-400 bg-orange-50' : ''
             }`}
@@ -300,10 +257,10 @@ const Pricing = () => {
               return (
                 <CarouselItem key={plan.name} className={`!basis-[80vw] max-w-[340px] ${index === 0 ? 'ml-4' : ''} mr-6`}>
                   <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: index * 0.05 }} // Reduced duration and delay
+                    transition={{ duration: 0.2 }} // Minimal animation for mobile performance
                     className={`relative flex flex-col items-center bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg hover:border-orange-400 hover:bg-orange-50 transition-all duration-300 flex-1 min-w-[220px] max-w-full mx-2 p-0 z-10 pt-10 group`}
                     style={{ boxSizing: 'border-box' }}
                   >
@@ -350,10 +307,10 @@ const Pricing = () => {
           return (
             <motion.div
               key={plan.name}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: index * 0.05 }} // Reduced timing
+              transition={{ duration: 0.2 }} // Minimal animation for mobile performance
               className={`relative flex flex-col items-center bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg hover:border-orange-400 hover:bg-orange-50 transition-all duration-300 flex-1 min-w-[220px] max-w-full mx-2 p-0 z-10 pt-10 group`}
               style={{ boxSizing: 'border-box' }}
             >
@@ -392,10 +349,10 @@ const Pricing = () => {
       </div>
 
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.2 }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
         className="max-w-3xl mx-auto text-center bg-white rounded-xl shadow-md p-8"
       >
         <h3 className="text-2xl font-semibold mb-4">Bereit zum Beitreten?</h3>
