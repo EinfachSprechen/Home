@@ -283,12 +283,12 @@ const Feedback = () => {
               </div>
             </motion.div>
 
-            {/* Navigation Arrows */}
-            <div className="flex justify-between items-center absolute top-1/2 transform -translate-y-1/2 w-full px-4 z-20">
+            {/* Navigation Arrows - Positioned outside content area */}
+            <div className="hidden md:flex justify-between items-center absolute top-1/2 transform -translate-y-1/2 w-full pointer-events-none z-5">
               <button
                 onClick={prevTestimonial}
                 disabled={isDragging}
-                className="w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center text-gray-600 hover:text-lila hover:bg-gray-50 transition-all duration-200 disabled:opacity-50 hover:scale-110"
+                className="w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center text-gray-600 hover:text-lila hover:bg-gray-50 transition-all duration-200 disabled:opacity-50 hover:scale-110 pointer-events-auto -ml-6"
                 aria-label="Vorheriges Feedback"
               >
                 <ChevronLeft className="w-6 h-6" />
@@ -296,12 +296,21 @@ const Feedback = () => {
               <button
                 onClick={nextTestimonial}
                 disabled={isDragging}
-                className="w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center text-gray-600 hover:text-lila hover:bg-gray-50 transition-all duration-200 disabled:opacity-50 hover:scale-110"
+                className="w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center text-gray-600 hover:text-lila hover:bg-gray-50 transition-all duration-200 disabled:opacity-50 hover:scale-110 pointer-events-auto -mr-6"
                 aria-label="Nächstes Feedback"
               >
                 <ChevronRight className="w-6 h-6" />
               </button>
             </div>
+          </div>
+
+          {/* Mobile Swipe Hint */}
+          <div className="md:hidden text-center mt-4 mb-2">
+            <p className="text-sm text-gray-600 flex items-center justify-center gap-2">
+              <span>👈</span>
+              <span>Wische um mehr Feedback zu sehen</span>
+              <span>👉</span>
+            </p>
           </div>
 
           {/* Pagination Dots */}
@@ -310,7 +319,7 @@ const Feedback = () => {
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                className={`w-4 h-4 md:w-3 md:h-3 rounded-full transition-all duration-200 ${
                   index === currentIndex 
                     ? 'bg-lila scale-125' 
                     : 'bg-gray-300 hover:bg-gray-400'
