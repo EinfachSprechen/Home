@@ -115,7 +115,7 @@ const Feedback = () => {
   }) => {
     return (
       <motion.div 
-        className="relative flex-shrink-0 w-full px-4 h-full flex items-center"
+        className="relative flex-shrink-0 w-full px-2 md:px-4 min-h-[400px] md:min-h-[580px] flex items-center"
         style={{ 
           opacity, 
           zIndex 
@@ -132,7 +132,7 @@ const Feedback = () => {
       >
         {/* Cloud-style message bubble */}
         <div className="relative w-full">
-          <div className="bg-white rounded-3xl shadow-lg p-6 md:p-8 relative min-h-[580px] flex flex-col">
+          <div className="bg-white rounded-3xl shadow-lg p-4 md:p-6 lg:p-8 relative min-h-[400px] md:min-h-[580px] flex flex-col">
             {/* Cloud tail */}
             <div className="absolute -bottom-4 left-8 w-8 h-8">
               <div className="w-0 h-0 border-l-[16px] border-l-transparent border-r-[16px] border-r-transparent border-t-[16px] border-t-white"></div>
@@ -144,22 +144,22 @@ const Feedback = () => {
             <StarRating rating={testimonial.rating} />
             
             {/* Title */}
-            <h3 className="text-lg font-semibold text-gray-900 mb-4 leading-tight">
+            <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-3 md:mb-4 leading-tight">
               {testimonial.title}
             </h3>
             
             {/* Message - No longer scrollable, full content shown */}
-            <div className="flex-1 mb-6 pr-2 relative">
+            <div className="flex-1 mb-4 md:mb-6 pr-2 relative">
               {/* Opening Quote Mark */}
-              <div className="absolute -top-2 -left-1 text-6xl text-gray-700 font-serif leading-none select-none">
+              <div className="absolute -top-1 md:-top-2 -left-1 text-4xl md:text-6xl text-gray-700 font-serif leading-none select-none">
                 "
               </div>
               
-              <div className="text-gray-700 leading-relaxed text-sm md:text-base pl-8 pt-4">
+              <div className="text-gray-700 leading-relaxed text-xs md:text-sm lg:text-base pl-6 md:pl-8 pt-3 md:pt-4">
                 {testimonial.message.split('\n\n').map((paragraph, index) => (
                   <p 
                     key={index} 
-                    className={index > 0 ? 'mt-4' : ''}
+                    className={index > 0 ? 'mt-3 md:mt-4' : ''}
                     dangerouslySetInnerHTML={{ __html: paragraph }}
                   />
                 ))}
@@ -167,20 +167,20 @@ const Feedback = () => {
               
               {/* Closing Quote Mark */}
               <div className="flex justify-end">
-                <div className="text-6xl text-gray-700 font-serif leading-none select-none -mt-4 -mr-1">
+                <div className="text-4xl md:text-6xl text-gray-700 font-serif leading-none select-none -mt-2 md:-mt-4 -mr-1">
                   "
                 </div>
               </div>
             </div>
             
             {/* Author info - Fixed at bottom */}
-            <div className="flex items-center gap-4 mt-auto">
-              <div className="w-12 h-12 bg-gradient-to-br from-lila to-lila-dark rounded-full flex items-center justify-center text-white font-bold text-lg">
+            <div className="flex items-center gap-3 md:gap-4 mt-auto">
+              <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-lila to-lila-dark rounded-full flex items-center justify-center text-white font-bold text-base md:text-lg">
                 {testimonial.name[0]}
               </div>
               <div>
-                <div className="font-semibold text-gray-900">{testimonial.name}</div>
-                <div className="text-sm text-gray-600">Sprachniveau: {testimonial.level}</div>
+                <div className="font-semibold text-gray-900 text-sm md:text-base">{testimonial.name}</div>
+                <div className="text-xs md:text-sm text-gray-600">Sprachniveau: {testimonial.level}</div>
               </div>
             </div>
           </div>
@@ -220,10 +220,10 @@ const Feedback = () => {
 
         <div className="max-w-6xl mx-auto">
           {/* Swipeable Carousel with Adjacent Cards */}
-          <div className="relative overflow-hidden" style={{ height: '700px' }}>
+          <div className="relative overflow-visible min-h-[500px] md:min-h-[700px]">
             {/* Main Carousel Container */}
             <motion.div
-              className="flex items-center justify-center relative h-full w-full"
+              className="flex items-center justify-center relative min-h-[500px] md:min-h-[700px] w-full"
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
               dragElastic={0.2}
@@ -233,9 +233,9 @@ const Feedback = () => {
               whileDrag={{ cursor: 'grabbing' }}
             >
               {/* All Cards Container - Creates continuous carousel effect */}
-              <div className="flex w-full h-full relative">
+              <div className="flex w-full min-h-[500px] md:min-h-[700px] relative">
                 {/* Previous Card - Left Side (Faded) */}
-                <div className="absolute left-0 top-0 w-full h-full pointer-events-none hidden md:block">
+                <div className="absolute left-0 top-0 w-full min-h-[500px] md:min-h-[700px] pointer-events-none hidden md:block">
                   <div className="transform -translate-x-3/4">
                     <TestimonialCard 
                       testimonial={testimonials[getPrevIndex()]} 
@@ -268,7 +268,7 @@ const Feedback = () => {
                 </div>
 
                 {/* Next Card - Right Side (Faded) */}
-                <div className="absolute right-0 top-0 w-full h-full pointer-events-none hidden md:block">
+                <div className="absolute right-0 top-0 w-full min-h-[500px] md:min-h-[700px] pointer-events-none hidden md:block">
                   <div className="transform translate-x-3/4">
                     <TestimonialCard 
                       testimonial={testimonials[getNextIndex()]} 
