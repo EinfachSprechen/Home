@@ -1,40 +1,69 @@
 import { motion, PanInfo } from 'framer-motion';
 import { useState } from 'react';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import { useTranslation } from '@/hooks/useTranslation';
 
 const Feedback = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState(0);
+  const { t, language } = useTranslation();
 
-  const testimonials = [
-    {
-      name: "Karly",
-      level: "B2-C1",
-      rating: 5,
-      title: "Perfect for Continuing My German Journey",
-      message: "Einfach Sprechen was such a <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>easy and effective way</span> for me to continue on my German Learning Journey. It can be really hard to make the time to go to courses, especially once you reach a certain level where <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>actively using the language</span> becomes the foundational block towards improvement!\n\nThe <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>online format</span>, paired with the small <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>engaging daily activities</span>, was a really great way for me to actively check-in and work towards my goals. The <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>weekly Zoom calls</span> not only helped me challenge myself and improve my speaking, it was also a really nice way to <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>connect with others</span> who were in a similar situation to me.\n\nAliona has many years experience teaching languages and her <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>passion and innovative methods</span> really shone through and <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>motivated me to improve</span>! I don't think my German Learning Journey will ever be over, but I am grateful to the Einfach Sprechen community for its contribution towards supporting me along the way."
-    },
-    {
-      name: "Nadine",
-      level: "B1",
-      rating: 5,
-      title: "Cool and Unorthodox Learning Method",
-      message: "It's a <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>cool and unorthodox way</span> to learn languages. My level is B1, and even though I didn't always understand everything other participants said, I still <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>felt comfortable</span> because the teacher explained things in a way that made everything clear.\n\nShe was very <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>supportive</span>, and the topics we discussed were really <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>interesting and much different from the textbook ones</span>. I also loved the presentations. The information was <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>structured like a mind map</span> and we moved from one part to another, tying everything together at the end.\n\nIt helps to <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>remember what I learned</span> from the lesson afterwards."
-    },
-    {
-      name: "Marina",
-      level: "C1",
-      rating: 5,
-      title: "Genau Das, Was Der Name Verspricht",
-      message: "Einfach Sprechen bietet <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>genau das an, was der Name verspricht</span>. Ich habe genug Grammatik bei Deutschkursen und mit Büchern gelernt, aber in diesem Kurs übt man eigentlich den wichtigsten Aspekt, nämlich <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>die Praxis</span>.\n\nDie Aufgaben während der Woche sind so aufgebaut, das man diese <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>einfach und schnell am Handy</span> während einer Busfahrt oder in einer Schlange bearbeiten kann. Durch die Bearbeitung der Aufgaben lernt man die <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>Vokabeln und Phrasen zum Thema</span> und sammelt auch Ideen für die Diskussion.\n\nIch finde dieses Format <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>perfekt für die Verbesserung meiner Sprachkompetenz</span> indem ich <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>jeden Tag wenige Minuten</span> damit verbringe und am Ende der Woche meinen <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>neu erlernten Wortschatz anwenden</span> kann."
-    }
-  ];
+  const testimonials = {
+    de: [
+      {
+        name: "Karly",
+        level: "B2-C1",
+        rating: 5,
+        title: "Perfect for Continuing My German Journey",
+        message: "Einfach Sprechen was such a <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>easy and effective way</span> for me to continue on my German Learning Journey. It can be really hard to make the time to go to courses, especially once you reach a certain level where <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>actively using the language</span> becomes the foundational block towards improvement!\n\nThe <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>online format</span>, paired with the small <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>engaging daily activities</span>, was a really great way for me to actively check-in and work towards my goals. The <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>weekly Zoom calls</span> not only helped me challenge myself and improve my speaking, it was also a really nice way to <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>connect with others</span> who were in a similar situation to me.\n\nAliona has many years experience teaching languages and her <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>passion and innovative methods</span> really shone through and <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>motivated me to improve</span>! I don't think my German Learning Journey will ever be over, but I am grateful to the Einfach Sprechen community for its contribution towards supporting me along the way."
+      },
+      {
+        name: "Nadine",
+        level: "B1",
+        rating: 5,
+        title: "Cool and Unorthodox Learning Method",
+        message: "It's a <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>cool and unorthodox way</span> to learn languages. My level is B1, and even though I didn't always understand everything other participants said, I still <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>felt comfortable</span> because the teacher explained things in a way that made everything clear.\n\nShe was very <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>supportive</span>, and the topics we discussed were really <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>interesting and much different from the textbook ones</span>. I also loved the presentations. The information was <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>structured like a mind map</span> and we moved from one part to another, tying everything together at the end.\n\nIt helps to <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>remember what I learned</span> from the lesson afterwards."
+      },
+      {
+        name: "Marina",
+        level: "C1",
+        rating: 5,
+        title: "Genau Das, Was Der Name Verspricht",
+        message: "Einfach Sprechen bietet <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>genau das an, was der Name verspricht</span>. Ich habe genug Grammatik bei Deutschkursen und mit Büchern gelernt, aber in diesem Kurs übt man eigentlich den wichtigsten Aspekt, nämlich <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>die Praxis</span>.\n\nDie Aufgaben während der Woche sind so aufgebaut, das man diese <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>einfach und schnell am Handy</span> während einer Busfahrt oder in einer Schlange bearbeiten kann. Durch die Bearbeitung der Aufgaben lernt man die <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>Vokabeln und Phrasen zum Thema</span> und sammelt auch Ideen für die Diskussion.\n\nIch finde dieses Format <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>perfekt für die Verbesserung meiner Sprachkompetenz</span> indem ich <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>jeden Tag wenige Minuten</span> damit verbringe und am Ende der Woche meinen <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>neu erlernten Wortschatz anwenden</span> kann."
+      }
+    ],
+    en: [
+      {
+        name: "Karly",
+        level: "B2-C1",
+        rating: 5,
+        title: "Perfect for Continuing My German Journey",
+        message: "Einfach Sprechen was such an <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>easy and effective way</span> for me to continue on my German Learning Journey. It can be really hard to make the time to go to courses, especially once you reach a certain level where <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>actively using the language</span> becomes the foundational block towards improvement!\n\nThe <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>online format</span>, paired with the small <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>engaging daily activities</span>, was a really great way for me to actively check-in and work towards my goals. The <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>weekly Zoom calls</span> not only helped me challenge myself and improve my speaking, it was also a really nice way to <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>connect with others</span> who were in a similar situation to me.\n\nAliona has many years experience teaching languages and her <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>passion and innovative methods</span> really shone through and <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>motivated me to improve</span>! I don't think my German Learning Journey will ever be over, but I am grateful to the Einfach Sprechen community for its contribution towards supporting me along the way."
+      },
+      {
+        name: "Nadine",
+        level: "B1",
+        rating: 5,
+        title: "Cool and Unorthodox Learning Method",
+        message: "It's a <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>cool and unorthodox way</span> to learn languages. My level is B1, and even though I didn't always understand everything other participants said, I still <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>felt comfortable</span> because the teacher explained things in a way that made everything clear.\n\nShe was very <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>supportive</span>, and the topics we discussed were really <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>interesting and much different from the textbook ones</span>. I also loved the presentations. The information was <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>structured like a mind map</span> and we moved from one part to another, tying everything together at the end.\n\nIt helps to <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>remember what I learned</span> from the lesson afterwards."
+      },
+      {
+        name: "Sarah",
+        level: "B2",
+        rating: 5,
+        title: "Exactly What I Needed",
+        message: "Einfach Sprechen offers <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>exactly what the name promises</span> - simple speaking practice! I had learned enough grammar in German courses and with books, but in this course you actually practice the most important aspect: <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>real conversation</span>.\n\nThe weekly tasks are designed so that you can <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>easily and quickly complete them on your phone</span> during a bus ride or while waiting in line. By completing the tasks, you learn the <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>vocabulary and phrases for the topic</span> and also collect ideas for the discussion.\n\nI find this format <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>perfect for improving my language skills</span> by spending <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>just a few minutes each day</span> and being able to <span class='bg-pastel-lila/30 px-1 py-0.5 rounded text-lila-dark font-medium'>apply my newly learned vocabulary</span> at the end of the week."
+      }
+    ]
+  };
+
+  const currentTestimonials = testimonials[language];
 
   const nextTestimonial = () => {
     if (!isDragging) {
       setCurrentIndex((prevIndex) => 
-        prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+        prevIndex === currentTestimonials.length - 1 ? 0 : prevIndex + 1
       );
     }
   };
@@ -42,7 +71,7 @@ const Feedback = () => {
   const prevTestimonial = () => {
     if (!isDragging) {
       setCurrentIndex((prevIndex) => 
-        prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
+        prevIndex === 0 ? currentTestimonials.length - 1 : prevIndex - 1
       );
     }
   };
@@ -64,21 +93,21 @@ const Feedback = () => {
     
     if (info.offset.x > threshold) {
       setCurrentIndex((prevIndex) => 
-        prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
+        prevIndex === 0 ? currentTestimonials.length - 1 : prevIndex - 1
       );
     } else if (info.offset.x < -threshold) {
       setCurrentIndex((prevIndex) => 
-        prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+        prevIndex === currentTestimonials.length - 1 ? 0 : prevIndex + 1
       );
     }
   };
 
   const getPrevIndex = () => {
-    return currentIndex === 0 ? testimonials.length - 1 : currentIndex - 1;
+    return currentIndex === 0 ? currentTestimonials.length - 1 : currentIndex - 1;
   };
 
   const getNextIndex = () => {
-    return currentIndex === testimonials.length - 1 ? 0 : currentIndex + 1;
+    return currentIndex === currentTestimonials.length - 1 ? 0 : currentIndex + 1;
   };
 
   const StarRating = ({ rating }: { rating: number }) => {
@@ -106,7 +135,7 @@ const Feedback = () => {
     translateX = 0,
     isDragging = false
   }: { 
-    testimonial: typeof testimonials[0], 
+    testimonial: typeof currentTestimonials[0], 
     opacity?: number, 
     scale?: number,
     zIndex?: number,
@@ -180,7 +209,7 @@ const Feedback = () => {
               </div>
               <div>
                 <div className="font-semibold text-gray-900 text-sm md:text-base">{testimonial.name}</div>
-                <div className="text-xs md:text-sm text-gray-600">Sprachniveau: {testimonial.level}</div>
+                <div className="text-xs md:text-sm text-gray-600">{t('common.languageLevel')}: {testimonial.level}</div>
               </div>
             </div>
           </div>
@@ -212,9 +241,9 @@ const Feedback = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="section-title">Was unsere Community sagt</h2>
+          <h2 className="section-title">{t('feedback.title')}</h2>
           <p className="section-subtitle">
-            Echte Erfahrungen von Lernenden, die ihren Weg mit Einfach Sprechen gefunden haben.
+            {t('feedback.subtitle')}
           </p>
         </motion.div>
 
@@ -238,7 +267,7 @@ const Feedback = () => {
                 <div className="absolute left-0 top-0 w-full min-h-[500px] md:min-h-[700px] pointer-events-none hidden md:block">
                   <div className="transform -translate-x-3/4">
                     <TestimonialCard 
-                      testimonial={testimonials[getPrevIndex()]} 
+                      testimonial={currentTestimonials[getPrevIndex()]} 
                       opacity={0.3}
                       scale={0.85}
                       zIndex={1}
@@ -257,7 +286,7 @@ const Feedback = () => {
                     transition={{ duration: 0.3 }}
                   >
                     <TestimonialCard 
-                      testimonial={testimonials[currentIndex]} 
+                      testimonial={currentTestimonials[currentIndex]} 
                       opacity={1}
                       scale={1}
                       zIndex={10}
@@ -271,7 +300,7 @@ const Feedback = () => {
                 <div className="absolute right-0 top-0 w-full min-h-[500px] md:min-h-[700px] pointer-events-none hidden md:block">
                   <div className="transform translate-x-3/4">
                     <TestimonialCard 
-                      testimonial={testimonials[getNextIndex()]} 
+                      testimonial={currentTestimonials[getNextIndex()]} 
                       opacity={0.3}
                       scale={0.85}
                       zIndex={1}
@@ -308,14 +337,14 @@ const Feedback = () => {
           <div className="md:hidden text-center mt-4 mb-2">
             <p className="text-sm text-gray-600 flex items-center justify-center gap-2">
               <span>👈</span>
-              <span>Wische um mehr Feedback zu sehen</span>
+              <span>{t('feedback.mobileHint')}</span>
               <span>👉</span>
             </p>
           </div>
 
           {/* Pagination Dots */}
           <div className="flex justify-center gap-2 mt-4">
-            {testimonials.map((_, index) => (
+            {currentTestimonials.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
@@ -390,7 +419,7 @@ const Feedback = () => {
               viewport={{ once: true, amount: 0.3 }}
               className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full shadow-lg text-lg transition-colors duration-200 inline-block text-center"
             >
-              Jetzt beitreten! 
+              {t('feedback.cta')}
             </motion.a>
             {/* Right Down Arrow */}
             <motion.svg

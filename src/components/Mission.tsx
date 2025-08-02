@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Users, Repeat, ShieldCheck, GraduationCap, BookOpen, MessageCircle, Globe, Sparkles, Smile, ChevronDown, ChevronUp } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useTranslation } from '@/hooks/useTranslation';
 
 const values = [
   {
@@ -41,6 +42,22 @@ const values = [
 ];
 
 const Mission = () => {
+  const { t, language } = useTranslation();
+  
+  // Icon mapping
+  const getIcon = (iconName: string) => {
+    const iconMap: { [key: string]: React.ReactNode } = {
+      'repeat': <Repeat className="w-8 h-8 text-orange-500 flex-shrink-0 mt-1" />,
+      'shield-check': <ShieldCheck className="w-8 h-8 text-orange-500 flex-shrink-0 mt-1" />,
+      'graduation-cap': <GraduationCap className="w-8 h-8 text-orange-500 flex-shrink-0 mt-1" />,
+      'book-open': <BookOpen className="w-8 h-8 text-orange-500 flex-shrink-0 mt-1" />,
+      'message-circle': <MessageCircle className="w-8 h-8 text-orange-500 flex-shrink-0 mt-1" />,
+      'globe': <Globe className="w-8 h-8 text-orange-500 flex-shrink-0 mt-1" />,
+      'smile': <Smile className="w-8 h-8 text-orange-500 flex-shrink-0 mt-1" />
+    };
+    return iconMap[iconName] || <Users className="w-8 h-8 text-orange-500 flex-shrink-0 mt-1" />;
+  };
+  
   const boxVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.7 } }
@@ -122,7 +139,7 @@ const Mission = () => {
           variants={boxVariants}
           className="section-title mb-10 text-3xl sm:text-4xl font-bold text-center"
         >
-          Unsere Mission
+          {t('mission.title')}
         </motion.h2>
 
         {/* Violet Box */}
@@ -135,7 +152,7 @@ const Mission = () => {
         >
           <div className="flex flex-col justify-center w-full">
             <p className="text-base font-medium w-full text-justify">
-              Lernen ist keine Einzelleistung – es lebt von Verbindung, Vertrauen und Freude. Wir schaffen eine Community, in der du dich gesehen und unterstützt fühlst. Einen Raum, in dem Fehler willkommen sind, Sprechen Spaß macht und du nicht alleine lernst, sondern gemeinsam mit Menschen, die dieselbe Reise gehen wie du.
+              {t('mission.description')}
             </p>
           </div>
         </motion.div>
@@ -148,11 +165,11 @@ const Mission = () => {
           variants={boxVariants}
           className="section-title mb-8 text-3xl sm:text-4xl font-bold text-center"
         >
-          Unsere Werte & Prinzipien
+          {t('mission.valuesTitle')}
         </motion.h3>
 
         <div className="grid gap-4 max-w-4xl mx-auto">
-          {values.map((val, idx) => (
+          {t('mission.values').map((val: any, idx: number) => (
             <motion.div
               key={val.title}
               initial="hidden"
@@ -168,7 +185,7 @@ const Mission = () => {
                 aria-controls={`mission-box-${idx}`}
               >
                 <span className="flex items-center gap-3">
-                  {val.icon}
+                  {getIcon(val.icon)}
                   <span className="text-lg font-semibold">{val.title}</span>
                 </span>
                 {openIndex === idx ? (
@@ -249,7 +266,7 @@ const Mission = () => {
               viewport={{ once: true, amount: 0.3 }}
               className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full shadow-lg text-lg transition-colors duration-200 inline-block text-center"
             >
-              Jetzt beitreten! 
+              {t('mission.cta')}
             </motion.a>
             {/* Right Down Arrow */}
             <motion.svg

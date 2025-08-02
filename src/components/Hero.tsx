@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion';
 import ContactButtons from './ContactButtons';
+import { useTranslation } from '@/hooks/useTranslation';
 import heroImage from '/images/hero-image.png';
 
 const Hero = () => {
+  const { t } = useTranslation();
+  
   return (
     <section
       id="hero"
@@ -24,17 +27,15 @@ const Hero = () => {
             className="text-center md:text-left"
           >
             <div className="inline-block px-3 py-1 mb-4 rounded-full bg-pastel-lila text-lila-dark font-medium text-base sm:text-lg" style={{ transform: "scale(0.9)", transformOrigin: "left" }}>
-              Community für Deutschlernende
+              {t('hero.communityTag')}
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold mb-6 tracking-tight">
               Einfach <span className="text-orange">Sprechen</span>
             </h1>
-            <h2 className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-lg mx-auto md:mx-0">
-              Gemeinsam wachsen.<br />
-              Mutig sprechen.<br />
-              Spannende Gespräche führen.<br />
-              Mit muttersprachlicher Begleitung.
-            </h2>
+            <h2 
+              className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-lg mx-auto md:mx-0"
+              dangerouslySetInnerHTML={{ __html: t('hero.subtitle') }}
+            />
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-8">
               <button
                 className="btn-primary flex items-center justify-center gap-2"
@@ -45,7 +46,7 @@ const Hero = () => {
                   }
                 }}
               >
-                <span>Jetzt beitreten</span>
+                <span>{t('hero.cta')}</span>
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
@@ -59,7 +60,7 @@ const Hero = () => {
                   }
                 }}
               >
-                Mehr erfahren
+                {t('hero.learnMore')}
               </button>
             </div>
             
@@ -88,7 +89,7 @@ const Hero = () => {
             >
               <img 
                 src={heroImage} 
-                alt="Deutschlernende Community" 
+                alt={t('hero.imageAlt')} 
                 className="w-full h-auto object-cover bg-transparent border-none shadow-none scale-[0.95] md:scale-[0.6] transition-transform duration-300"
               />
             </motion.div>

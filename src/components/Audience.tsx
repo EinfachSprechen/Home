@@ -1,18 +1,34 @@
 import { CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
-
-const reasons = [
-	'Du 15–30 Minuten pro Tag fürs Deutschüben hast',
-	'Du eine feste Lernroutine suchst – ohne Druck',
-	'Du sprechen willst, ohne Angst vor Fehlern',
-	'Du selbstbewusster sprechen willst',
-	'Du in Alltagssituationen flüssiger sprechen möchtest',
-	'Du deinen Wortschatz aktiv, gezielt und mühelos erweitern willst',
-	'Du wissen willst, worüber in der deutschsprachigen Welt gesprochen wird',
-	'Du Deutschlernende suchst, die mit dir auf derselben Wellenlänge sind',
-];
+import { useTranslation } from '@/hooks/useTranslation';
 
 const Audience = () => {
+	const { t, language } = useTranslation();
+	
+	const reasons = {
+		de: [
+			'Du 15–30 Minuten pro Tag fürs Deutschüben hast',
+			'Du eine feste Lernroutine suchst – ohne Druck',
+			'Du sprechen willst, ohne Angst vor Fehlern',
+			'Du selbstbewusster sprechen willst',
+			'Du in Alltagssituationen flüssiger sprechen möchtest',
+			'Du deinen Wortschatz aktiv, gezielt und mühelos erweitern willst',
+			'Du wissen willst, worüber in der deutschsprachigen Welt gesprochen wird',
+			'Du Deutschlernende suchst, die mit dir auf derselben Wellenlänge sind',
+		],
+		en: [
+			'You have 15-30 minutes per day for German practice',
+			'You are looking for a solid learning routine – without pressure',
+			'You want to speak without fear of making mistakes',
+			'You want to speak more confidently',
+			'You want to speak more fluently in everyday situations',
+			'You want to expand your vocabulary actively, purposefully and effortlessly',
+			'You want to know what people are talking about in the German-speaking world',
+			'You are looking for German learners who are on the same wavelength as you',
+		]
+	};
+
+	const currentReasons = reasons[language];
 	return (
 		<section id="audience" className="section relative overflow-hidden bg-gradient-to-b from-pastel-lila/10 to-white">
 			{/* Background decoration */}
@@ -87,16 +103,16 @@ const Audience = () => {
 					style={{ transform: 'scale(1.3)', transformOrigin: 'top left' }} // 30% bigger
 				>
 					<h2 className="section-title mb-15 text-3xl sm:text-4xl font-bold">
-						Ist Einfach Sprechen gut für mich?
+						{t('audience.title')}
 					</h2>
 					<p className="section-subtitle mb-2 text-x2 text-gray-700 font-normal">
-						Du bist hier richtig, wenn ...
+						{t('audience.subtitle')}
 					</p>
 				</motion.div>
 
         <div className="max-w-2xl mx-auto">
           <ul className="flex flex-col gap-4">
-            {reasons.map((reason, idx) => (
+            {currentReasons.map((reason, idx) => (
               <motion.li
                 key={reason}
                 initial={{ opacity: 0, x: -20 }}
@@ -176,7 +192,7 @@ const Audience = () => {
                 viewport={{ once: true, amount: 0.3 }}
                 className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full shadow-lg text-lg transition-colors duration-200 inline-block text-center"
               >
-                Jetzt beitreten! 
+                {t('audience.cta')}
               </motion.a>
               {/* Right Down Arrow */}
               <motion.svg

@@ -2,87 +2,11 @@ import { Check, ArrowRight, ArrowLeft, MousePointerClick } from 'lucide-react';
 import { motion } from 'framer-motion';
 import ContactButtons from './ContactButtons';
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
-import { useMemo } from 'react';
-
-const plans = [
-  {
-    name: "Probewoche¹",
-    duration: "1 Woche",
-    price: "9",
-    description: "¹Nur für neue Mitglieder & bei bestehendem Instagram-Follow @hey_alyon_ka",
-    features: [
-      "Zugang zur Telegram-Gruppe mit täglichen Lernimpulsen",
-      "1x wöchentlich: Sprechklub mit Muttersprachler:in",
-      "Kommunikative Aufgaben (Text, Audio, Video)",
-      "Fragen an eine:n Native Speaker",
-      "Wöchentliches Quizlet-Set mit Vokabeln",
-      "Zugriff auf Inhalte aus den Vorwochen"
-    ],
-    highlight: true
-  },
-  {
-    name: "Startklar",
-    duration: "1–4 Wochen",
-    price: "15",
-    description: "Alle Inhalte, flexibel für den Einstieg",
-    features: [
-      "Alle Inhalte & Vorteile enthalten",
-      "Flexibler Einstieg ohne lange Bindung",
-      "Perfekt zum Ausprobieren der Methode",
-      "Je länger du bleibst, desto günstiger wird es"
-    ],
-    highlight: false
-  },
-  {
-    name: "Dranbleiben",
-    duration: "5–11 Wochen",
-    price: "13",
-    description: "Für alle, die dranbleiben wollen",
-    features: [
-      "Alle Inhalte & Vorteile enthalten",
-      "Günstigerer Wochenpreis",
-      "Mehr Zeit für nachhaltigen Fortschritt",
-      "Ideal für kontinuierliches Lernen"
-    ],
-    highlight: false
-  },
-  {
-    name: "Sprachflow",
-    duration: "ab 12 Wochen",
-    price: "11",
-    description: "Werde Sprachflow und spare am meisten",
-    features: [
-      "Alle Inhalte & Vorteile enthalten",
-      "Bester Preis pro Woche",
-      "Langfristige Sprachentwicklung",
-      "Maximale Ersparnisse bei längster Laufzeit"
-    ],
-    highlight: false
-  }
-];
-
-// Original pricing icons for better visual appeal
-const savingsIcons = [
-  <svg key="1" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" /></svg>,
-  <svg key="2" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="2" fill="none" /></svg>,
-  <svg key="3" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="2" stroke="currentColor" strokeWidth="2" fill="none" /></svg>,
-  <svg key="4" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="2" stroke="currentColor" strokeWidth="2" fill="none" /><path d="M12 2v20M2 12h20" stroke="currentColor" strokeWidth="2" /></svg>
-];
-
-// Pre-calculate savings amounts to avoid runtime calculations
-const getSavings = (planName: string) => {
-  switch (planName) {
-    case "Probewoche¹": return 6;
-    case "Dranbleiben": return 22;
-    case "Sprachflow": return 48;
-    default: return 0;
-  }
-};
+import { useTranslation } from '@/hooks/useTranslation';
 
 const Pricing = () => {
-  // Memoize plans slice to prevent unnecessary re-calculations
-  const otherPlans = useMemo(() => plans.slice(1), []);
-  
+  const { t } = useTranslation();
+
   return (
   <section id="pricing" className="section relative overflow-hidden bg-gradient-to-b from-pastel-orange/10 to-pastel-lila/15">
     {/* Background decoration */}
@@ -91,36 +15,71 @@ const Pricing = () => {
       <div className="absolute bottom-0 left-0 w-[450px] h-[450px] bg-pastel-orange rounded-full filter blur-3xl opacity-18 translate-y-1/3 -translate-x-1/3"></div>
       <div className="absolute top-1/3 left-1/3 w-[200px] h-[200px] bg-orange-light rounded-full filter blur-2xl opacity-12"></div>
       
-      {/* Decorative squared elements - static for better mobile performance */}
-      <div className="absolute top-1/6 left-1/4 w-10 h-10 bg-pastel-peach rounded-lg rotate-45 opacity-60 hidden md:block"></div>
-      <div className="absolute bottom-1/4 right-1/6 w-13 h-13 bg-pastel-green rounded-lg rotate-30 opacity-55 hidden md:block"></div>
-      <div className="absolute top-3/4 left-1/6 w-11 h-11 bg-pastel-blue rounded-lg rotate-15 opacity-65 hidden md:block"></div>
-      <div className="absolute top-1/3 right-1/4 w-8 h-8 bg-pastel-pink rounded-lg rotate-50 opacity-70 hidden md:block"></div>
+      {/* Decorative squared elements */}
+      <div className="absolute top-1/6 left-1/4 w-10 h-10 bg-pastel-peach rounded-lg rotate-45 animate-float opacity-60"></div>
+      <div className="absolute bottom-1/4 right-1/6 w-13 h-13 bg-pastel-green rounded-lg rotate-30 animate-float opacity-55"></div>
+      <div className="absolute top-3/4 left-1/6 w-11 h-11 bg-pastel-blue rounded-lg rotate-15 animate-float opacity-65"></div>
+      <div className="absolute top-1/3 right-1/4 w-8 h-8 bg-pastel-pink rounded-lg rotate-50 animate-float opacity-70"></div>
       
-      {/* Animated decorative elements - simplified for mobile performance */}
+      {/* Animated decorative elements */}
       <motion.div 
-        className="absolute top-1/5 left-1/6 w-9 h-9 bg-pastel-lila/40 rounded-full hidden md:block"
+        className="absolute top-1/5 left-1/6 w-9 h-9 bg-pastel-lila/40 rounded-full"
         animate={{ 
-          opacity: [0.3, 0.6, 0.3],
-          scale: [1, 1.2, 1]
+          opacity: [0.3, 0.8, 0.3],
+          scale: [0.8, 1.6, 0.8]
         }}
         transition={{ 
-          duration: 4,
+          duration: 7.5,
           repeat: Infinity,
-          ease: "easeInOut",
-          repeatDelay: 1
+          ease: "easeInOut"
         }}
       />
       <motion.div 
-        className="absolute bottom-1/3 left-1/4 w-7 h-7 bg-pastel-orange/45 rounded-full hidden md:block"
+        className="absolute top-1/2 right-1/5 w-6 h-6 bg-orange-light/50"
         animate={{ 
-          opacity: [0.4, 0.7, 0.4]
+          opacity: [0.2, 0.7, 0.2],
+          rotate: [0, 360]
         }}
         transition={{ 
-          duration: 3,
+          duration: 12,
           repeat: Infinity,
-          ease: "easeInOut",
-          repeatDelay: 0.5
+          ease: "linear"
+        }}
+      />
+      <motion.div 
+        className="absolute bottom-1/3 left-1/4 w-7 h-7 bg-pastel-orange/45 rounded-full"
+        animate={{ 
+          opacity: [0.4, 0.9, 0.4],
+          y: [-18, 18, -18]
+        }}
+        transition={{ 
+          duration: 6.5,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+      <motion.div 
+        className="absolute top-2/3 right-1/3 w-5 h-5 bg-lila/40 rotate-45"
+        animate={{ 
+          opacity: [0.25, 0.75, 0.25],
+          x: [-14, 14, -14]
+        }}
+        transition={{ 
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+      <motion.div 
+        className="absolute top-1/4 right-1/2 w-4 h-4 bg-pastel-lila/55 rounded-full"
+        animate={{ 
+          opacity: [0.35, 0.85, 0.35],
+          scale: [1, 1.3, 1]
+        }}
+        transition={{ 
+          duration: 5,
+          repeat: Infinity,
+          ease: "easeInOut"
         }}
       />
     </div>
@@ -130,85 +89,52 @@ const Pricing = () => {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.3, ease: "easeOut" }} // Faster, simpler animation
+        transition={{ duration: 0.6 }}
         className="text-center mb-14"
       >
         <h2 className="section-title mb-14 text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900">
-          Preise & Mitgliedschaft
+          {t('pricing.title')}
         </h2>
-        <div className="max-w-4xl mx-auto mb-8 p-6 bg-orange-50 rounded-xl border-l-4 border-orange-400">
-          <p className="text-lg md:text-xl text-gray-800 font-medium text-center">
-            <span className="font-semibold text-orange-600">Wähle dein Paket aus</span> und du wirst kontaktiert, um beizutreten.
-          </p>
-        </div>
         <p className="section-subtitle mb-10 text-xl md:text-2xl text-gray-600 font-medium">
-          Lerne regelmäßig und entspannt – du bestimmst die Dauer.<br />
+          {t('pricing.subtitle')}<br />
           <span className="text-gray-600 font-normal">
-            Alle Pakete enthalten dieselben Inhalte. Je länger du bleibst, desto günstiger wird es für dich.
+            {t('pricing.description')}
           </span>
         </p>
         <div className="max-w-2xl mx-auto text-left bg-white/90 rounded-2xl p-10 mt-10 shadow-lg border border-gray-100">
           <div className="flex items-center mb-6 gap-3">
       
-        <span className="font-bold text-2xl text-gray-900">Was ist enthalten?</span>
+        <span className="font-bold text-2xl text-gray-900">{t('pricing.whatsIncluded')}</span>
           </div>
           <ul className="grid gap-5 text-gray-800 text-base md:text-lg">
-        <li className="flex items-start gap-3">
-          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-orange-100 mt-1">
-            <Check className="w-5 h-5 text-orange-500" />
-          </span>
-          Zugang zur Telegram-Gruppe mit täglichen Lernimpulsen
-        </li>
-        <li className="flex items-start gap-3">
-          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-orange-100 mt-1">
-            <Check className="w-5 h-5 text-orange-500" />
-          </span>
-          1x wöchentlich: Sprechklub mit Muttersprachler:in
-        </li>
-        <li className="flex items-start gap-3">
-          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-orange-100 mt-1">
-            <Check className="w-5 h-5 text-orange-500" />
-          </span>
-          Kommunikative Aufgaben (Text, Audio, Video)
-        </li>
-        <li className="flex items-start gap-3">
-          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-orange-100 mt-1">
-            <Check className="w-5 h-5 text-orange-500" />
-          </span>
-          Möglichkeit, jederzeit Fragen an eine:n Native Speaker zu stellen
-        </li>
-        <li className="flex items-start gap-3">
-          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-orange-100 mt-1">
-            <Check className="w-5 h-5 text-orange-500" />
-          </span>
-          Wöchentliches Quizlet-Set mit Vokabeln zum Thema
-        </li>
-        <li className="flex items-start gap-3">
-          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-orange-100 mt-1">
-            <Check className="w-5 h-5 text-orange-500" />
-          </span>
-          Zugriff auf Inhalte aus den Vorwochen
-        </li>
+        {(t('pricing.features') || []).map((feature, index) => (
+          <li key={index} className="flex items-start gap-3">
+            <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-orange-100 mt-1">
+              <Check className="w-5 h-5 text-orange-500" />
+            </span>
+            {feature}
+          </li>
+        ))}
           </ul>
         </div>
       </motion.div>
 
       {/* Probewoche in first line */}
       <div className="flex flex-col md:flex-row gap-8 w-full mb-8 justify-center">
-        {plans.slice(0, 1).map((plan, index) => (
+        {(t('pricing.plans') || []).slice(0, 1).map((plan, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.25, ease: "easeOut" }} // Simplified animation
-            className={`bg-white rounded-xl shadow-md overflow-hidden transition-all hover:shadow-lg hover:-translate-y-2 duration-300 min-w-[270px] ${
-              plan.highlight ? 'ring-2 ring-orange-400 bg-orange-50' : ''
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className={`bg-white rounded-xl shadow-md overflow-hidden transition-all hover:shadow-lg hover:-translate-y-2 duration-300 min-w-[270px] relative ${
+              index === 0 ? 'ring-2 ring-orange-400 bg-orange-50' : ''
             }`}
           >
-            {plan.highlight && (
-              <div className="bg-orange-400 text-white py-2 text-center text-sm font-medium">
-                Probewoche-Angebot
+            {index === 0 && (
+              <div className="absolute top-3 right-3 bg-orange-500 text-white text-sm font-bold px-3 py-1.5 rounded-full z-10">
+                {t('pricing.newMemberOnly')}
               </div>
             )}
             <div className="p-6">
@@ -218,11 +144,6 @@ const Pricing = () => {
                 <span className="text-3xl font-bold">{plan.price}</span>
                 <span className="text-gray-500">€</span>
               </div>
-              {plan.name === "Probewoche¹" && (
-                <div className="mb-2 inline-block bg-green-600 text-white text-xs font-bold rounded-full px-3 py-1 shadow">
-                  Spare 6€
-                </div>
-              )}
               <p className="text-gray-600 mb-6">{plan.description}</p>
               <ul className="space-y-3 mb-6">
                 {/* Features removed to avoid repetition with the section above */}
@@ -231,9 +152,9 @@ const Pricing = () => {
                 href="https://tally.so/r/3E7Mo4" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-full py-2 px-4 rounded-lg transition-colors bg-orange-500 hover:bg-orange-600 text-white text-center block"
+                className="w-full py-2 px-4 rounded-lg transition-colors bg-orange-500 hover:bg-orange-600 text-white inline-block text-center"
               >
-                Auswählen
+                {t('pricing.selectButton')}
               </a>
             </div>
           </motion.div>
@@ -250,17 +171,25 @@ const Pricing = () => {
         </div>
         <Carousel>
           <CarouselContent>
-            {otherPlans.map((plan, index) => {
+            {(t('pricing.plans') || []).slice(1).map((plan, index) => {
+              // Icons for savings level (from 1 to 4)
+              const savingsIcons = [
+                <svg key="1" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" /></svg>,
+                <svg key="2" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="2" fill="none" /></svg>,
+                <svg key="3" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="2" stroke="currentColor" strokeWidth="2" fill="none" /></svg>,
+                <svg key="4" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="2" stroke="currentColor" strokeWidth="2" fill="none" /><path d="M12 2v20M2 12h20" stroke="currentColor" strokeWidth="2" /></svg>
+              ];
               const icon = savingsIcons[index % savingsIcons.length];
-              const saveUpTo = getSavings(plan.name);
-              
+              let saveUpTo = 0;
+              if (plan.name === "Dranbleiben") saveUpTo = 22;
+              if (plan.name === "Sprachflow") saveUpTo = 48;
               return (
-                <CarouselItem key={plan.name} className={`!basis-[80vw] max-w-[340px] ${index === 0 ? 'ml-4' : ''} mr-6`}>
+                <CarouselItem key={plan.name} className={`!basis-[70vw] max-w-[320px] ${index === 0 ? 'ml-4' : ''} mr-4`}>
                   <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.2 }} // Minimal animation for mobile performance
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
                     className={`relative flex flex-col items-center bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg hover:border-orange-400 hover:bg-orange-50 transition-all duration-300 flex-1 min-w-[220px] max-w-full mx-2 p-0 z-10 pt-10 group`}
                     style={{ boxSizing: 'border-box' }}
                   >
@@ -273,23 +202,28 @@ const Pricing = () => {
                       <span className="text-3xl font-bold text-gray-900">{plan.price}</span>
                       <span className="text-xs text-gray-500">€/Woche</span>
                     </div>
-                    {saveUpTo > 0 ? (
-                      <div className="mb-2 inline-block bg-green-600 text-white text-xs font-bold rounded-full px-3 py-1 shadow z-10">
-                        Spare {saveUpTo}€
-                      </div>
-                    ) : (
-                      <div className="mb-2 inline-block bg-transparent text-transparent text-xs font-bold rounded-full px-3 py-1 z-10">
-                        Spare 0€
-                      </div>
-                    )}
+                    {(() => {
+                      let saveUpTo = 0;
+                      if (plan.name === "Dranbleiben") saveUpTo = 22;
+                      if (plan.name === "Sprachflow") saveUpTo = 48;
+                      return saveUpTo > 0 ? (
+                        <div className="mb-2 inline-block bg-green-600 text-white text-xs font-bold rounded-full px-3 py-1 shadow z-10">
+                          Spare bis zu {saveUpTo}€
+                        </div>
+                      ) : (
+                        <div className="mb-2 inline-block bg-transparent text-transparent text-xs font-bold rounded-full px-3 py-1 z-10">
+                          Spare bis zu 0€
+                        </div>
+                      );
+                    })()}
                     <p className="text-gray-600 mb-6 text-base min-h-[48px] text-center break-words px-2">{plan.description}</p>
                     <a 
                       href="https://tally.so/r/3E7Mo4" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="mt-auto w-[90%] py-2 mb-4 rounded-lg border-2 border-current text-base font-semibold text-gray-900 bg-white transition-colors duration-200 group-hover:bg-orange-500 group-hover:text-white hover:bg-orange-500 hover:text-white text-center block"
+                      className="mt-auto w-[90%] py-2 mb-4 rounded-lg border-2 border-current text-base font-semibold text-gray-900 bg-white transition-colors duration-200 group-hover:bg-orange-500 group-hover:text-white hover:bg-orange-500 hover:text-white inline-block text-center"
                     >
-                      Auswählen
+                      {t('pricing.selectButton')}
                     </a>
                   </motion.div>
                 </CarouselItem>
@@ -300,17 +234,26 @@ const Pricing = () => {
       </div>
       {/* Desktop flex row */}
       <div className="hidden md:flex flex-row gap-6 w-full mb-16 overflow-x-auto justify-center min-h-[420px]">
-        {otherPlans.map((plan, index) => {
+        {(t('pricing.plans') || []).slice(1).map((plan, index) => {
+          // Icons for savings level (from 1 to 4)
+          const savingsIcons = [
+            <svg key="1" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" /></svg>,
+            <svg key="2" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="2" fill="none" /></svg>,
+            <svg key="3" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="2" stroke="currentColor" strokeWidth="2" fill="none" /></svg>,
+            <svg key="4" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="2" stroke="currentColor" strokeWidth="2" fill="none" /><path d="M12 2v20M2 12h20" stroke="currentColor" strokeWidth="2" /></svg>
+          ];
           const icon = savingsIcons[index % savingsIcons.length];
-          const saveUpTo = getSavings(plan.name);
-          
+          // Adjust savings for Dranbleiben
+          let saveUpTo = 0;
+          if (plan.name === "Dranbleiben") saveUpTo = 22;
+          if (plan.name === "Sprachflow") saveUpTo = 48;
           return (
             <motion.div
               key={plan.name}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.2 }} // Minimal animation for mobile performance
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               className={`relative flex flex-col items-center bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg hover:border-orange-400 hover:bg-orange-50 transition-all duration-300 flex-1 min-w-[220px] max-w-full mx-2 p-0 z-10 pt-10 group`}
               style={{ boxSizing: 'border-box' }}
             >
@@ -325,23 +268,28 @@ const Pricing = () => {
                 <span className="text-xs text-gray-500">€/Woche</span>
               </div>
               {/* Savings below price */}
-              {saveUpTo > 0 ? (
-                <div className="mb-2 inline-block bg-green-600 text-white text-xs font-bold rounded-full px-3 py-1 shadow z-10">
-                  Spare {saveUpTo}€
-                </div>
-              ) : (
-                <div className="mb-2 inline-block bg-transparent text-transparent text-xs font-bold rounded-full px-3 py-1 z-10">
-                  Spare 0€
-                </div>
-              )}
+              {(() => {
+                let saveUpTo = 0;
+                if (plan.name === "Dranbleiben") saveUpTo = 22;
+                if (plan.name === "Sprachflow") saveUpTo = 48;
+                return saveUpTo > 0 ? (
+                  <div className="mb-2 inline-block bg-green-600 text-white text-xs font-bold rounded-full px-3 py-1 shadow z-10">
+                    Spare bis zu {saveUpTo}€
+                  </div>
+                ) : (
+                  <div className="mb-2 inline-block bg-transparent text-transparent text-xs font-bold rounded-full px-3 py-1 z-10">
+                    Spare bis zu 0€
+                  </div>
+                );
+              })()}
               <p className="text-gray-600 mb-6 text-base min-h-[48px] text-center break-words px-2">{plan.description}</p>
               <a 
                 href="https://tally.so/r/3E7Mo4" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="mt-auto w-[90%] py-2 mb-4 rounded-lg border-2 border-current text-base font-semibold text-gray-900 bg-white transition-colors duration-200 group-hover:bg-orange-500 group-hover:text-white hover:bg-orange-500 hover:text-white text-center block"
+                className="mt-auto w-[90%] py-2 mb-4 rounded-lg border-2 border-current text-base font-semibold text-gray-900 bg-white transition-colors duration-200 group-hover:bg-orange-500 group-hover:text-white hover:bg-orange-500 hover:text-white inline-block text-center"
               >
-                Auswählen
+                {t('pricing.selectButton')}
               </a>
             </motion.div>
           );
@@ -349,27 +297,26 @@ const Pricing = () => {
       </div>
 
       <motion.div
-        initial={{ opacity: 0, y: 15 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
+        transition={{ duration: 0.6, delay: 0.2 }}
         className="max-w-3xl mx-auto text-center bg-white rounded-xl shadow-md p-8"
       >
-        <h3 className="text-2xl font-semibold mb-4">Bereit zum Beitreten?</h3>
+        <h3 className="text-2xl font-semibold mb-4">{t('pricing.contactSection.title')}</h3>
         <p className="text-gray-600 mb-8">
-          Kontaktiere Aliona direkt über einen der folgenden Kanäle, um deine Mitgliedschaft zu beginnen 
-          oder weitere Fragen zu stellen.
+          {t('pricing.contactSection.description')}
         </p>
         
         <ContactButtons className="justify-center" />
         
         <p className="mt-8 text-sm text-gray-500">
-          Einstieg ist jede Woche möglich.
+          {t('pricing.contactSection.entryNote')}
         </p>
       </motion.div>
     </div>
   </section>
-);
+  );
 };
 
 export default Pricing;
